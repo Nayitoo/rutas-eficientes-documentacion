@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon.png">
+<title>Aprilon — Guía de inicio rápido y Preguntas frecuentes</title>
+<style>
+:root{
+  --bg:#ffffff;
+  --panel:#f7f8f9;
+  --panel-soft:#ffffff;
+  --ink:#2b2f31;
+  --ink-soft:#52585b;
+  --ink-faint:#7b8184;
+  --ink-title:#111416;
+  --line:#e3e6e8;
+  --line-soft:#eef0f2;
+  --accent:#00B359;
+  --accent-strong:#007a3d;
+  --accent-bg:#e6f9ef;
+  --accent-slate:#00B359;
+  --accent-slate-bg:#e6f9ef;
+  --radius:12px;
+  color-scheme: light;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:15px;
+  line-height:1.65;
+}
+h1,h2,h3,h4{font-family:inherit;color:var(--ink-title);line-height:1.25}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+
+.page{max-width:860px;margin:0 auto;padding:56px 24px 90px}
+
+/* ---------- Hero ---------- */
+.hero{padding-bottom:32px;margin-bottom:36px;border-bottom:1px solid var(--line)}
+.hero-eyebrow{font-size:12.5px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.hero-title{font-size:clamp(30px,5vw,42px);font-weight:800;margin:0 0 14px;letter-spacing:-.5px;color:var(--ink-title)}
+.hero-lead{font-size:16.5px;color:var(--ink-soft);max-width:65ch;margin:0}
+
+/* ---------- Sections ---------- */
+.doc-section{border:1px solid var(--line);border-radius:var(--radius);background:var(--panel-soft);
+  padding:30px 32px;margin-bottom:24px}
+.section-head{margin-bottom:18px}
+.kicker{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;
+  color:var(--accent);background:var(--accent-bg);padding:4px 10px;border-radius:99px;margin-bottom:10px}
+.section-title{font-size:25px;font-weight:800;margin:0 0 6px;letter-spacing:-.3px;color:var(--ink-title)}
+.section-lead{font-size:15.5px;color:var(--ink-soft);margin:0}
+
+.section-body p{margin:0 0 14px;color:var(--ink)}
+.section-body strong{color:var(--ink-title);font-weight:700}
+.sub-h3{scroll-margin-top:24px;font-size:16.5px;font-weight:800;margin:26px 0 10px;color:var(--accent)}
+
+code{background:var(--panel);border:1px solid var(--line);padding:2px 6px;border-radius:4px;
+  font:13.5px/1.4 "JetBrains Mono",Consolas,monospace;color:var(--ink-title)}
+
+/* ---------- Info cards (antes de empezar) ---------- */
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:18px 0 8px}
+.info-card{font-size:13.5px;color:var(--ink);background:var(--panel);border:1px solid var(--line);
+  border-radius:10px;padding:13px 15px}
+.info-card strong{display:block;color:var(--ink-title);font-size:14px;margin-bottom:4px}
+
+/* ---------- Steps ---------- */
+ol.steps{list-style:none;counter-reset:s;padding:0;margin:18px 0}
+ol.steps>li{counter-increment:s;position:relative;padding:16px 0 16px 56px;border-bottom:1px solid var(--line-soft)}
+ol.steps>li:last-child{border-bottom:none}
+ol.steps>li:before{content:counter(s);position:absolute;left:0;top:16px;width:34px;height:34px;
+  background:var(--accent);color:#ffffff;border-radius:50%;display:grid;place-items:center;font-weight:800}
+.step-title{display:block;font-size:16px;color:var(--ink-title);margin-bottom:3px}
+
+/* ---------- Callout ---------- */
+.callout{border:1px solid var(--line);border-left:4px solid var(--accent);background:var(--accent-bg);
+  border-radius:10px;padding:16px 18px;margin:20px 0}
+.callout-label{font-size:11.5px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.callout p{margin:0;color:var(--ink)}
+
+/* ---------- Capturas ---------- */
+.shot{margin:18px 0 6px}
+.shot img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:10px}
+.shot figcaption{margin-top:8px;font-size:12.5px;color:var(--ink-faint)}
+.shot-grid{display:grid;grid-template-columns:1fr;gap:18px;margin:18px 0 6px}
+.shot-grid .shot{margin:0}
+.faq-answer .shot img{border-radius:8px}
+
+/* ---------- FAQ ---------- */
+.faq-group-title{font-size:13px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;
+  color:var(--accent);margin:28px 0 10px}
+.faq-group-title:first-child{margin-top:8px}
+.faq-list{display:flex;flex-direction:column;gap:8px;margin:0 0 6px}
+.faq-item{border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:2px 4px}
+.faq-item summary{cursor:pointer;list-style:none;padding:13px 14px;font-weight:600;font-size:14.5px;
+  display:flex;gap:10px;align-items:baseline;color:var(--ink-title)}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:"+";margin-left:auto;color:var(--ink-faint);font-weight:400;font-size:18px}
+.faq-item[open] summary::after{content:"–"}
+.faq-num{color:var(--accent);font-weight:800;min-width:18px}
+.faq-answer{padding:0 14px 15px 42px;color:var(--ink-soft);font-size:14px}
+.faq-answer p{margin:0 0 8px}
+
+/* ---------- Footer ---------- */
+.doc-footer{margin-top:50px;padding-top:26px;border-top:1px solid var(--line);color:var(--ink-faint);
+  font-size:12.5px;line-height:1.8}
+
+@media (max-width:640px){
+  .page{padding:40px 18px 60px}
+  .hero-title{font-size:28px}
+  .info-grid{grid-template-columns:1fr}
+  .doc-section{padding:22px 18px}
+  .section-title{font-size:22px}
+  .faq-answer{padding:0 12px 14px 18px}
+  .faq-item summary{padding:12px 12px;font-size:14px}
+}
+
+@media print{
+  body{background:#fff}
+  .doc-section{border-color:#ddd;background:#fff;page-break-inside:auto}
+  ol.steps>li,.faq-item,.callout{page-break-inside:avoid;break-inside:avoid}
+  a{color:inherit;text-decoration:none}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<header class="hero">
+  <div class="hero-eyebrow">Aprilon · Rutas Eficientes</div>
+  <h1 class="hero-title">Guía de inicio rápido y Preguntas frecuentes</h1>
+  <p class="hero-lead">Documentación de usuario · Secciones s11 y s12 · Versión 1.0 — septiembre de 2026</p>
+</header>
+
+<!-- ============ s11 ============ -->
+<section class="doc-section" id="s11">
+  <div class="section-head">
+    <span class="kicker">Sección 11</span>
+    <h2 class="section-title">Guía de inicio rápido</h2>
+    <p class="section-lead">Lo mínimo para publicar tu primera ruta y que el conductor la reciba. Toma unos diez minutos.</p>
+  </div>
+  <div class="section-body">
+
+    <h3 class="sub-h3">Antes de empezar</h3>
+    <div class="info-grid">
+      <div class="info-card"><strong>Un navegador</strong>No hay nada que instalar.</div>
+      <div class="info-card"><strong>Tu usuario y clave</strong>Te los da el jefe.</div>
+      <div class="info-card"><strong>La dirección del sistema</strong>La URL donde está publicado.</div>
+    </div>
+
+    <h3 class="sub-h3">Configuración inicial (una sola vez)</h3>
+    <p>Si sos quien instala el sistema, necesitás un servidor con PHP 8 y MySQL, importar los tres archivos de <code>db/</code> en ese orden —<code>aprilon.sql</code>, <code>rutas.sql</code>, <code>incidentes.sql</code>— y completar el archivo <code>.env</code> con la clave de Google y los datos del correo saliente. Si el sistema ya está funcionando, saltá directo al paso 1.</p>
+
+    <h3 class="sub-h3">Las tres acciones clave</h3>
+    <ol class="steps">
+      <li><span class="step-title">Ingresá y reconocé tu rol</span>
+          Escribí tu usuario y contraseña. El sistema te lleva a la pantalla que corresponde a tu rol: el <strong>administrador</strong> arma las rutas, el <strong>conductor</strong> las recorre, el <strong>jefe</strong> gestiona las cuentas. Si es tu primer ingreso con una clave temporal, el sistema te va a pedir que la cambies.
+          <figure class="shot"><img src="img/01-login.jpg" alt="Pantalla de inicio de sesión de Aprilon"><figcaption>Pantalla de ingreso. Debajo del botón está el acceso a «¿Olvidaste tu contraseña?».</figcaption></figure>
+          <figure class="shot"><img src="img/02-inicio-admin.jpg" alt="Panel de inicio del administrador con el selector de días de la semana"><figcaption>Inicio del administrador: el selector de días, los contadores del día y el botón para agregar puntos.</figcaption></figure></li>
+      <li><span class="step-title">Cargá los puntos de entrega</span>
+          Entrá a <strong>Agregar punto</strong>. Escribí la dirección y elegila de la lista que aparece sola mientras tipeás. Si es un cliente al que repartís seguido, guardalo en la agenda con un apodo y la próxima vez lo elegís de la pestaña <strong>Punto guardado</strong>. Cada punto que agregás aparece en el panel de la derecha.
+          <div class="shot-grid">
+            <figure class="shot"><img src="img/03-agregar-punto-mapa.jpg" alt="Pantalla Agregar punto con el mapa y las pestañas Dirección nueva y Punto guardado"><figcaption>El primer punto que cargues es el origen de la ruta.</figcaption></figure>
+            <figure class="shot"><img src="img/04-agregar-punto-form.jpg" alt="Formulario de alta de punto con alias, dirección y email de verificación"><figcaption>Alias, dirección y el email de verificación opcional.</figcaption></figure>
+          </div></li>
+      <li><span class="step-title">Calculá la ruta y publicala</span>
+          Con dos puntos o más se habilita <strong>Calcular ruta óptima</strong>. El sistema reordena las paradas para que el recorrido sea el más corto posible y te muestra el camino en el mapa. Si estás conforme, publicala: desde ese momento el conductor la ve en su teléfono.
+          <div class="shot-grid">
+            <figure class="shot"><img src="img/06-historial-rutas.jpg" alt="Historial de rutas con estados Publicada, Completada y En curso"><figcaption>Cada ruta publicada queda en el historial con sus paradas, distancia y estado.</figcaption></figure>
+            <figure class="shot"><img src="img/07-detalle-ruta.jpg" alt="Detalle de una ruta completada con sus dos paradas tildadas"><figcaption>Detalle de una ruta: las paradas tildadas son las que el conductor ya entregó.</figcaption></figure>
+          </div></li>
+    </ol>
+
+    <div class="callout">
+      <div class="callout-label">Opcional pero recomendado</div>
+      <p>Al cargar un punto podés escribir el email del destinatario. Al publicar, el sistema le manda una palabra al azar. El conductor va a tener que pedirle esa palabra al entregar para poder marcar la parada como completada: es la prueba de que la entrega ocurrió.</p>
+    </div>
+
+    <h3 class="sub-h3">Del otro lado: el conductor</h3>
+    <p>El conductor entra con su usuario y ve la ruta del día ya ordenada. Toca cada parada a medida que entrega y la marca como completada. Si algo sale mal —una calle cortada, un cliente ausente— reporta un imprevisto y el administrador lo ve al instante en su panel.</p>
+    <div class="shot-grid">
+      <figure class="shot"><img src="img/12-conductor-inicio.jpg" alt="Pantalla de inicio del conductor con paradas, tiempo estimado y distancia"><figcaption>Inicio del conductor: paradas del día, tiempo estimado y próxima parada.</figcaption></figure>
+      <figure class="shot"><img src="img/13-conductor-mi-ruta.jpg" alt="Pantalla Mi ruta del conductor con el mapa del recorrido del día"><figcaption>«Mi ruta»: el recorrido del día en el mapa, con pantalla completa y compartir.</figcaption></figure>
+    </div>
+    <figure class="shot"><img src="img/14-reportar-imprevisto.jpg" alt="Formulario de reporte de imprevisto con los tipos disponibles"><figcaption>Reporte de imprevisto: se elige el tipo, se agrega un detalle y el administrador lo recibe al instante.</figcaption></figure>
+
+    <h3 class="sub-h3">Listo</h3>
+    <p>Con eso ya tenés el ciclo completo: cargar, calcular, publicar, recorrer y verificar. Todo lo demás —la agenda de lugares, el historial de rutas, las rutas programadas para días futuros, la gestión de usuarios— está explicado en el manual de uso.</p>
+
+  </div>
+</section>
+
+<!-- ============ s12 ============ -->
+<section class="doc-section" id="s12">
+  <div class="section-head">
+    <span class="kicker">Sección 12</span>
+    <h2 class="section-title">Preguntas frecuentes</h2>
+    <p class="section-lead">Respuestas breves a las dudas que aparecen más seguido. Cada una se puede leer por separado.</p>
+  </div>
+  <div class="section-body">
+
+    <h3 class="faq-group-title">Acceso</h3>
+    <div class="faq-list">
+      <details class="faq-item"><summary><span class="faq-num">1</span>Me olvidé la contraseña. ¿Qué hago?</summary>
+        <div class="faq-answer"><p>Pedí el restablecimiento desde la pantalla de ingreso. El jefe recibe la solicitud y te genera una clave temporal; con esa clave entrás y el sistema te obliga a definir una nueva.</p>
+        <div class="shot-grid">
+          <figure class="shot"><img src="img/15-olvide-contrasena.jpg" alt="Formulario Olvidé mi contraseña con usuario, clave temporal y nueva contraseña"><figcaption>Lo que ves vos: «Notificar al jefe» si todavía no tenés clave temporal.</figcaption></figure>
+          <figure class="shot"><img src="img/11-jefe-contrasenas.jpg" alt="Pantalla Contraseñas del jefe con el botón Restablecer por usuario"><figcaption>Lo que ve el jefe: restablece la credencial y genera la clave temporal.</figcaption></figure>
+        </div></div></details>
+      <details class="faq-item"><summary><span class="faq-num">2</span>¿Por qué no puedo crear un segundo administrador?</summary>
+        <div class="faq-answer"><p>Porque el sistema admite una sola cuenta de administrador, y esa restricción está impuesta por la base de datos, no por la pantalla. Si necesitás cambiar quién es el administrador, editá la cuenta existente.</p></div></details>
+      <details class="faq-item"><summary><span class="faq-num">3</span>¿Puedo tener varios conductores con rutas distintas?</summary>
+        <div class="faq-answer"><p>No. El sistema está pensado para un solo conductor: cualquier ruta publicada la ve quien esté logueado con ese rol. No hay asignación de rutas por persona.</p>
+        <figure class="shot"><img src="img/10-jefe-usuarios.jpg" alt="Pantalla Gestionar usuarios del jefe: una cuenta de administración compartida y un conductor"><figcaption>Gestión de usuarios: una sola cuenta de administración (compartida) y los conductores.</figcaption></figure></div></details>
+    </div>
+
+    <h3 class="faq-group-title">Armado de rutas</h3>
+    <div class="faq-list">
+      <details class="faq-item"><summary><span class="faq-num">4</span>El botón «Calcular ruta óptima» está gris y no puedo tocarlo.</summary>
+        <div class="faq-answer"><p>Necesitás al menos dos puntos cargados. Con uno solo no hay recorrido que optimizar. Agregá el segundo y el botón se habilita solo.</p></div></details>
+      <details class="faq-item"><summary><span class="faq-num">5</span>Cargué las paradas en un orden y el sistema me las cambió. ¿Es un error?</summary>
+        <div class="faq-answer"><p>No, es la función principal: el sistema reordena las paradas para que el recorrido total sea el más corto posible, considerando además el tráfico del momento.</p></div></details>
+      <details class="faq-item"><summary><span class="faq-num">6</span>¿Cuál es la diferencia entre «Dirección nueva» y «Punto guardado»?</summary>
+        <div class="faq-answer"><p>Una dirección nueva se usa solo en la ruta de hoy y no queda en la agenda. Un punto guardado es un cliente frecuente con un apodo, que podés reutilizar cuando quieras.</p>
+        <figure class="shot"><img src="img/05-agenda-lugares.jpg" alt="Agenda de lugares con el alta de punto y la lista de puntos guardados"><figcaption>La agenda de lugares: los puntos guardados se reutilizan en cualquier ruta.</figcaption></figure></div></details>
+      <details class="faq-item"><summary><span class="faq-num">7</span>El autocompletado de direcciones tarda o no muestra nada.</summary>
+        <div class="faq-answer"><p>Escribí al menos unas letras de la calle y esperá un segundo; aparece el indicador «Buscando…». Si no aparece ninguna sugerencia, revisá la conexión del servidor a internet: la búsqueda la resuelve Google, no el navegador.</p></div></details>
+      <details class="faq-item"><summary><span class="faq-num">8</span>Programé una ruta para un día futuro y al recargar la página desapareció la pestaña.</summary>
+        <div class="faq-answer"><p>La ruta sigue guardada en el servidor: lo que no persiste es la pestaña del día en pantalla. Volvé a elegir esa fecha en el calendario y reaparece con sus puntos.</p></div></details>
+      <details class="faq-item"><summary><span class="faq-num">9</span>Publiqué una ruta por error.</summary>
+        <div class="faq-answer"><p>Podés despublicarla desde el historial de rutas, y el conductor deja de verla. Si quedaron varias rutas duplicadas del día, existe además la opción de borrar todas las rutas de la fecha actual y empezar de cero.</p></div></details>
+    </div>
+
+    <h3 class="faq-group-title">Verificación de entregas</h3>
+    <div class="faq-list">
+      <details class="faq-item"><summary><span class="faq-num">10</span>¿Para qué sirve la palabra de verificación?</summary>
+        <div class="faq-answer"><p>Es la prueba de que la entrega se hizo. Al publicar la ruta, el destinatario recibe por email una palabra al azar; el conductor se la pide al entregar y la ingresa en la aplicación. Sin esa palabra, esa parada no se puede marcar como completada.</p></div></details>
+      <details class="faq-item"><summary><span class="faq-num">11</span>¿Se puede mandar la palabra por WhatsApp o SMS?</summary>
+        <div class="faq-answer"><p>No. Solo por email. Los otros canales requieren contratar un proveedor externo pago.</p></div></details>
+      <details class="faq-item"><summary><span class="faq-num">12</span>El destinatario no recibió el email.</summary>
+        <div class="faq-answer"><p>Revisá la carpeta de correo no deseado y que el email cargado en el punto esté bien escrito. Si nadie recibe los correos, el problema está en la configuración del servidor de salida.</p></div></details>
+      <details class="faq-item"><summary><span class="faq-num">13</span>El conductor ingresa la palabra y el sistema la rechaza.</summary>
+        <div class="faq-answer"><p>La palabra es la del último envío: si la ruta se volvió a publicar, la anterior dejó de valer y hay que usar la nueva. Cada intento fallido queda registrado.</p></div></details>
+    </div>
+
+    <h3 class="faq-group-title">En la calle</h3>
+    <div class="faq-list">
+      <details class="faq-item"><summary><span class="faq-num">14</span>El mapa no sigue mi posición.</summary>
+        <div class="faq-answer"><p>El seguimiento necesita el GPS encendido y el permiso de ubicación otorgado al navegador. Si lo rechazaste la primera vez, hay que habilitarlo en la configuración del sitio.</p></div></details>
+      <details class="faq-item"><summary><span class="faq-num">15</span>¿Tiene navegación con voz, como un GPS?</summary>
+        <div class="faq-answer"><p>Sí, pero se apoya en Google Maps: el botón de pantalla completa abre la navegación paso a paso allí. No existe un servicio de navegación con voz gratuito que pueda funcionar dentro de una página web.</p></div></details>
+      <details class="faq-item"><summary><span class="faq-num">16</span>¿Funciona sin señal?</summary>
+        <div class="faq-answer"><p>Parcialmente, y solo si el sistema está publicado con conexión segura (HTTPS): en ese caso el mapa del día queda precargado y se ve sin datos. Sobre una dirección sin HTTPS el navegador no lo permite. Marcar paradas siempre requiere conexión.</p></div></details>
+      <details class="faq-item"><summary><span class="faq-num">17</span>Se me cortó una calle y no puedo llegar a la próxima parada.</summary>
+        <div class="faq-answer"><p>Reportá un imprevisto indicando el tipo y el detalle. El administrador lo recibe en el momento, con aviso sonoro, y puede rearmar la ruta si hace falta.</p></div></details>
+    </div>
+
+    <h3 class="faq-group-title">General</h3>
+    <div class="faq-list">
+      <details class="faq-item"><summary><span class="faq-num">18</span>¿Se puede usar para dos empresas distintas?</summary>
+        <div class="faq-answer"><p>No. Cada instalación atiende a una sola empresa. Separar los datos de varias empresas requeriría un cambio de fondo en el sistema.</p></div></details>
+      <details class="faq-item"><summary><span class="faq-num">19</span>¿Hay que instalar algo en el teléfono del conductor?</summary>
+        <div class="faq-answer"><p>No. Se abre desde el navegador. Conviene guardar la dirección como acceso directo en la pantalla de inicio.</p></div></details>
+      <details class="faq-item"><summary><span class="faq-num">20</span>¿Los datos de los clientes están seguros?</summary>
+        <div class="faq-answer"><p>Las contraseñas se guardan cifradas y nunca en texto plano, y las claves de los servicios externos viven solo en el servidor: el navegador nunca las ve.</p></div></details>
+    </div>
+
+  </div>
+</section>
+
+<footer class="doc-footer">
+  Aprilon · Rutas Eficientes — Guía de inicio rápido y Preguntas frecuentes, versión 1.0.
+</footer>
+
+</div>
+</body>
+</html>
