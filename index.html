@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon.png">
+<title>Rutas Eficientes — Documentación</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --brand:#2f7d54; --brand-2:#3fa06b; --brand-soft:#e8f3ec;
+    --ink:#141815; --muted:#5c635e; --line:#dde3de; --bg:#eaefe9; --card:#f6f9f4;
+    --ease:cubic-bezier(.22,.61,.36,1);
+    color-scheme: light;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font:16px/1.65 Manrope,"Segoe UI",system-ui,sans-serif;
+       min-height:100vh;display:grid;place-items:center;padding:40px 22px}
+  .wrap{width:100%;max-width:880px}
+  header{text-align:center;margin-bottom:38px}
+  .mark{height:84px;width:auto;display:block;margin:0 auto 20px}
+  .pill{display:inline-block;font-size:12.5px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;
+        color:var(--brand);background:var(--brand-soft);padding:5px 13px;border-radius:99px;margin-bottom:14px}
+  h1{font-size:clamp(28px,5vw,38px);font-weight:800;letter-spacing:-.6px;margin:0 0 10px}
+  .lead{color:var(--muted);margin:0 auto;max-width:56ch}
+
+  .grid{display:grid;gap:16px;grid-template-columns:repeat(3,1fr)}
+  a.card{display:flex;flex-direction:column;gap:7px;background:var(--card);border:1px solid var(--line);
+         border-radius:16px;padding:24px 22px;text-decoration:none;color:inherit;
+         transition:transform .28s var(--ease),border-color .28s var(--ease)}
+  a.card:hover,a.card:focus-visible{transform:translateY(-3px);border-color:var(--brand);outline:none}
+  .num{font-size:12px;font-weight:800;letter-spacing:.8px;color:var(--brand)}
+  .card b{font-size:18px;font-weight:800;letter-spacing:-.2px}
+  .card span{color:var(--muted);font-size:14.5px;line-height:1.55}
+  .go{margin-top:auto;padding-top:12px;font-size:14px;font-weight:800;color:var(--brand)}
+
+  footer{margin-top:34px;text-align:center;color:var(--muted);font-size:13.5px}
+
+  @media (max-width:760px){ .grid{grid-template-columns:1fr} }
+  @media (prefers-reduced-motion:reduce){ a.card:hover{transform:none} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <img class="mark" src="logo.png" alt="" width="517" height="384">
+    <span class="pill">Aprilon · Rutas Eficientes</span>
+    <h1>Documentación</h1>
+    <p class="lead">Todo sobre la calculadora de rutas: qué es, cómo empezar a usarla y cómo funciona en detalle.</p>
+  </header>
+
+  <nav class="grid">
+    <a class="card" href="landing/">
+      <span class="num">01</span>
+      <b>El proyecto</b>
+      <span>Qué resuelve Rutas Eficientes, cómo funciona y quiénes lo hicieron.</span>
+      <span class="go">Ver la presentación →</span>
+    </a>
+    <a class="card" href="quickstart/">
+      <span class="num">02</span>
+      <b>Inicio rápido y FAQ</b>
+      <span>Los primeros pasos para empezar a usar el sistema, y las preguntas más comunes.</span>
+      <span class="go">Empezar →</span>
+    </a>
+    <a class="card" href="manual/">
+      <span class="num">03</span>
+      <b>Manual de usuario</b>
+      <span>La guía completa, pantalla por pantalla, para administradores y conductores.</span>
+      <span class="go">Leer el manual →</span>
+    </a>
+  </nav>
+
+  <footer>Proyecto final · Tecnicatura en Informática · 7° Informática B</footer>
+
+</div>
+</body>
+</html>

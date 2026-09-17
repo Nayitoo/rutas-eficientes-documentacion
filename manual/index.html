@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon.png">
+<title>Aprilon — Manual de usuario</title>
+<style>
+  :root{
+    --brand:#00B359; --brand-dark:#007a3d; --brand-soft:#e6f9ef; --ink:#1c1f1d; --muted:#5c635e;
+    --line:#dfe3e0; --bg:#ffffff; --code:#f3f5f3; --warn:#8a5a12; --warn-soft:#fdf3e2;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 "Manrope","Segoe UI",system-ui,sans-serif}
+  .page{max-width:840px;margin:0 auto;padding:48px 24px 80px}
+  header.cover{border-bottom:3px solid var(--brand);padding-bottom:26px;margin-bottom:14px}
+  .kicker{color:var(--brand);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:12px}
+  h1{font-size:36px;line-height:1.12;margin:8px 0 6px}
+  h2{font-size:25px;margin:46px 0 6px;padding-top:22px;border-top:1px solid var(--line)}
+  h2 .num{color:var(--brand);font-weight:800;margin-right:10px}
+  h3{font-size:18.5px;margin:28px 0 8px;color:var(--brand)}
+  h4{font-size:16px;margin:20px 0 6px}
+  p{margin:10px 0}
+  code{background:var(--code);padding:2px 6px;border-radius:4px;font:14px/1.4 "JetBrains Mono",Consolas,monospace}
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14.5px}
+  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  th{background:var(--brand-soft);font-weight:700}
+  .card{background:var(--brand-soft);border-left:4px solid var(--brand);padding:14px 16px;border-radius:0 8px 8px 0;margin:18px 0}
+  .warn{background:var(--warn-soft);border-left-color:var(--warn)}
+  .warn b{color:var(--warn)}
+  .card b{color:var(--brand-dark)}
+  ol li,ul li{margin:6px 0}
+  nav.toc{background:var(--code);border-radius:12px;padding:20px 24px;margin:26px 0 10px}
+  nav.toc h4{margin:0 0 10px;font-size:14px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+  nav.toc ol{margin:0;padding-left:20px;columns:2;column-gap:32px}
+  nav.toc a{color:var(--ink);text-decoration:none}
+  .shot{margin:18px 0}
+  .shot img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:10px}
+  .shot figcaption{margin-top:8px;font-size:15px;color:var(--muted)}
+  footer{margin-top:50px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+  @media (max-width:640px){ .page{padding:28px 16px 50px} h1{font-size:28px} nav.toc ol{columns:1} }
+  @media print{
+    *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important}
+    @page{margin:16mm 14mm}
+    body{font-size:11pt}
+    .page{max-width:none;padding:0}
+    h2{page-break-before:always;break-before:page;page-break-after:avoid}
+    h2#s1{page-break-before:avoid;break-before:auto}
+    h3,h4{page-break-after:avoid;break-after:avoid}
+    table,.card,.shot{page-break-inside:avoid;break-inside:avoid}
+    a{color:inherit;text-decoration:none}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<header class="cover">
+  <div class="kicker">Aprilon · Rutas Eficientes</div>
+  <h1>Manual de usuario</h1>
+</header>
+
+<nav class="toc">
+  <h4>Contenido</h4>
+  <ol>
+    <li><a href="#s1">Introducción</a></li>
+    <li><a href="#s2">Roles y permisos</a></li>
+    <li><a href="#s3">Ingreso y cuenta</a></li>
+    <li><a href="#s4">Puntos de entrega</a></li>
+    <li><a href="#s5">Armado de rutas</a></li>
+    <li><a href="#s6">Verificación de entregas</a></li>
+    <li><a href="#s7">Operación del repartidor</a></li>
+    <li><a href="#s8">Supervisión e imprevistos</a></li>
+    <li><a href="#s9">Historial y planificación</a></li>
+    <li><a href="#s10">Administración de usuarios</a></li>
+    <li><a href="#s11">Preferencias de interfaz</a></li>
+    <li><a href="#s12">Instalación y configuración</a></li>
+    <li><a href="#s13">Resolución de problemas</a></li>
+  </ol>
+</nav>
+
+<h2 id="s1"><span class="num">1</span>Introducción</h2>
+<p>Aprilon es el sistema de gestión de rutas de reparto de Aprilon Textiles. Resuelve un problema concreto: cuando el recorrido diario se arma de memoria, se recorren kilómetros de más, no queda registro de lo entregado y cualquier imprevisto se entera tarde.</p>
+<p>El sistema cubre el ciclo completo. Quien coordina carga las direcciones del día; el sistema calcula el orden más conveniente de las paradas teniendo en cuenta el tráfico; la ruta se publica y aparece en el teléfono del repartidor; y cada entrega se cierra con una constancia.</p>
+<p>Este manual documenta todas las funciones. Si es tu primer contacto con el sistema, empezá por la guía de inicio rápido, que cubre lo indispensable en diez minutos.</p>
+
+<h3>Qué necesitás</h3>
+<p>Nada que instalar: el sistema se usa desde el navegador. En la computadora conviene una pantalla de 1024 píxeles de ancho o más para la vista completa; en el teléfono del repartidor hace falta GPS activo y datos móviles durante el recorrido.</p>
+
+<h2 id="s2"><span class="num">2</span>Roles y permisos</h2>
+<p>El sistema tiene tres roles, y cada uno ve una aplicación distinta al ingresar.</p>
+<table>
+  <tr><th>Rol</th><th>Quién es</th><th>Qué puede hacer</th></tr>
+  <tr><td><b>Jefe</b></td><td>La dirección de la empresa</td><td>Crear, editar y eliminar cuentas de usuario; resolver pedidos de contraseña.</td></tr>
+  <tr><td><b>Administrador</b></td><td>Quien coordina el reparto (cuenta <code>ventas</code>)</td><td>Gestionar la agenda de clientes, armar y publicar rutas, seguir la operación y atender imprevistos.</td></tr>
+  <tr><td><b>Conductor</b></td><td>Quien reparte (cuenta <code>expedicion</code>)</td><td>Ver la ruta del día, seguirla en el mapa, cerrar paradas y reportar imprevistos.</td></tr>
+</table>
+<div class="card"><b>Dos reglas de diseño.</b> Existe una sola cuenta de administrador por instalación, garantizada por la base de datos. Y el sistema opera con un solo repartidor: no hay asignación de rutas por persona, cualquier ruta publicada la ve quien entre con ese rol.</div>
+
+<figure class="shot"><img src="img/09-jefe-panel.jpg" alt="Panel general del jefe con usuarios, puntos de la semana e imprevistos"><figcaption>El panel del jefe: usuarios, puntos de la semana e imprevistos reportados.</figcaption></figure>
+
+<h2 id="s3"><span class="num">3</span>Ingreso y cuenta</h2>
+<h3>3.1 Iniciar sesión</h3>
+<p>Ingresá tu usuario y contraseña. El sistema valida las credenciales y te lleva a la pantalla de tu rol. Las contraseñas se guardan cifradas: nadie, ni el jefe, puede ver tu contraseña actual.</p>
+<figure class="shot"><img src="img/01-login.jpg" alt="Pantalla de ingreso de Aprilon con los campos de usuario y contraseña"><figcaption>Pantalla de ingreso. Debajo del botón está el acceso a «¿Olvidaste tu contraseña?».</figcaption></figure>
+
+<figure class="shot"><img src="img/15-olvide-contrasena.jpg" alt="Formulario Olvide mi contrasena con usuario, clave temporal y nueva contrasena"><figcaption>El formulario de restablecimiento: si todavía no tenés clave temporal, «Notificar al jefe» le manda el pedido.</figcaption></figure>
+
+<h3>3.2 Primer ingreso con clave temporal</h3>
+<p>Si el jefe te generó una clave temporal, al entrar el sistema te obliga a definir una contraseña propia antes de dejarte usar la aplicación.</p>
+
+<h3>3.3 Olvidé mi contraseña</h3>
+<p>Desde la pantalla de ingreso pedí el restablecimiento. Queda registrada una solicitud pendiente; el jefe la resuelve generando una clave temporal que te comunica, y con esa clave volvés a entrar.</p>
+
+<h3>3.4 Foto de perfil</h3>
+<p>Cada usuario puede subir su foto desde su pantalla de perfil, y quitarla cuando quiera.</p>
+<figure class="shot"><img src="img/32-editar-perfil.jpg" alt="Panel Editar perfil con el boton Cambiar foto"><figcaption>Editar perfil: la foto es individual de cada usuario y se ve en su perfil y en los encabezados.</figcaption></figure>
+
+<h2 id="s4"><span class="num">4</span>Puntos de entrega</h2>
+<h3>4.1 Dirección nueva o punto guardado</h3>
+<p>La pantalla <b>Agregar punto</b> tiene dos pestañas, y la diferencia importa:</p>
+<ul>
+  <li><b>Dirección nueva</b>: se usa solo en la ruta que estás armando. No queda en la agenda.</li>
+  <li><b>Punto guardado</b>: se elige de la agenda de clientes frecuentes, identificados por un apodo.</li>
+</ul>
+<p>En ambos casos un único botón, <b>Agregar a la ruta</b>, actúa según la pestaña activa.</p>
+<figure class="shot"><img src="img/04-agregar-punto-form.jpg" alt="Pantalla Agregar punto con las pestañas Dirección nueva y Punto guardado sobre el formulario"><figcaption>Las dos pestañas de <b>Agregar punto</b>, y debajo el formulario con alias, dirección y email de verificación.</figcaption></figure>
+
+<figure class="shot"><img src="img/16-punto-guardado-selector.jpg" alt="Pestana Punto guardado con el desplegable de clientes frecuentes"><figcaption>La pestaña <b>Punto guardado</b>: se elige un cliente de la agenda por su apodo.</figcaption></figure>
+
+<h3>4.2 Autocompletado de direcciones</h3>
+<p>Mientras escribís aparecen sugerencias reales, y al elegir una el sistema resuelve sus coordenadas exactas. Mientras busca se muestra el indicador «Buscando…». Elegí siempre una sugerencia de la lista en lugar de escribir la dirección a mano: sin coordenadas el punto no se puede incluir en el cálculo.</p>
+
+<h3>4.3 El panel de la ruta</h3>
+<p>A la derecha aparece el panel <b>En la ruta</b> con los puntos que llevás cargados. Se muestra recién cuando agregás el primero, y se puede minimizar a una franja angosta para ganar espacio; al minimizarlo, el contador destella cuando entra un punto nuevo.</p>
+
+<figure class="shot"><img src="img/17-panel-en-la-ruta.jpg" alt="Panel En la ruta a la derecha con el primer punto cargado"><figcaption>El panel <b>En la ruta</b> aparece con el primer punto. Con uno solo, «Calcular ruta óptima» sigue deshabilitado.</figcaption></figure>
+
+<h3>4.4 Administrar la agenda</h3>
+<p>La pantalla de lugares guardados lista los clientes frecuentes. Al eliminar uno el sistema pide confirmación, porque la acción no se deshace.</p>
+
+<figure class="shot"><img src="img/05-agenda-lugares.jpg" alt="Agenda de lugares con el alta de punto y la lista de puntos guardados"><figcaption>La agenda de lugares: alta de un cliente frecuente y la lista de los ya guardados.</figcaption></figure>
+
+<h2 id="s5"><span class="num">5</span>Armado de rutas</h2>
+<h3>5.1 Calcular la ruta óptima</h3>
+<p>Con dos puntos o más se habilita <b>Calcular ruta óptima</b>. El sistema consulta el servicio de rutas y devuelve el recorrido más conveniente, <b>reordenando las paradas</b> y considerando el tráfico del momento.</p>
+<div class="card"><b>El orden que cargaste no es el orden final.</b> Que las paradas cambien de posición no es un error: es la función central del sistema. Cada tramo queda registrado con su distancia y su duración.</div>
+<figure class="shot"><img src="img/18-cuatro-puntos-listos.jpg" alt="Cuatro puntos cargados y el boton Calcular ruta optima habilitado"><figcaption>Con cuatro puntos cargados el botón <b>Calcular ruta óptima</b> queda habilitado.</figcaption></figure>
+<figure class="shot"><img src="img/19-ruta-trazada-mapa.jpg" alt="Vista previa con la ruta trazada sobre el mapa y las cuatro paradas numeradas"><figcaption>La ruta trazada sobre el mapa: 33,0 km, 1 h 16 min y cuatro paradas, ya reordenadas por el sistema.</figcaption></figure>
+<figure class="shot"><img src="img/20-vista-previa-paradas.jpg" alt="Vista previa con la lista de paradas en el orden optimo y el boton Publicar" ><figcaption>Debajo del mapa, las paradas en el orden óptimo y el botón para publicar la ruta.</figcaption></figure>
+
+<h3>5.2 Publicar</h3>
+<p>Publicar la ruta la deja disponible para el repartidor y dispara los correos de verificación de las paradas que tengan email.</p>
+
+<h3>5.3 Despublicar y corregir</h3>
+<figure class="shot"><img src="img/21-ruta-publicada.jpg" alt="Inicio del administrador con la ruta publicada del dia"><figcaption>Publicada: el contador pasa a 4 puntos y la ruta queda rotulada como <b>RUTA PUBLICADA</b>.</figcaption></figure>
+<p>Una ruta publicada se puede despublicar, y deja de verse en el teléfono. Si quedaron rutas duplicadas del día, existe la opción de borrar todas las rutas de la fecha actual, cualquiera sea su estado, para empezar de cero.</p>
+<div class="card warn"><b>Cuidado.</b> Borrar las rutas del día alcanza a todas las de esa fecha, incluidas las completadas, y no se puede deshacer.</div>
+
+<h3>5.4 Compartir</h3>
+<p>La ruta se puede compartir como texto plano, para pasarla por mensajería o dejarla registrada fuera del sistema.</p>
+
+<h2 id="s6"><span class="num">6</span>Verificación de entregas</h2>
+<figure class="shot"><img src="img/22-ruta-publicada-paradas.jpg" alt="Lista de paradas publicadas con los iconos de compartir y borrar"><figcaption>Las cuatro paradas publicadas. Arriba a la derecha, los íconos para compartir y para borrar las rutas del día.</figcaption></figure>
+<p>Es la función que convierte una entrega en un hecho comprobable.</p>
+<ol>
+  <li>Al cargar un punto, completás el <b>email del destinatario</b>. Es opcional.</li>
+  <li>Al publicar la ruta, el sistema genera una <b>palabra al azar</b> por cada parada con email y la envía por correo.</li>
+  <li>Al entregar, el repartidor le pide esa palabra a quien recibe y la ingresa. Sin la palabra correcta, esa parada no se puede cerrar.</li>
+</ol>
+<p>Cada intento fallido queda contabilizado. Si la ruta se vuelve a publicar, se genera una palabra nueva y la anterior deja de servir.</p>
+<div class="card warn"><b>Solo por email.</b> No hay envío por SMS ni WhatsApp: esos canales requieren contratar un proveedor externo pago.</div>
+
+<h2 id="s7"><span class="num">7</span>Operación del repartidor</h2>
+<h3>7.1 La ruta del día</h3>
+<figure class="shot"><img src="img/23-conductor-ruta-dia.jpg" alt="Inicio del repartidor con 4 paradas, 1 h 16 min y 33 km"><figcaption>Inicio del repartidor con la ruta recibida: paradas, tiempo estimado, distancia y próxima parada.</figcaption></figure>
+<p>Al ingresar, el repartidor ve la ruta publicada con sus paradas en el orden calculado.</p>
+<figure class="shot"><img src="img/12-conductor-inicio.jpg" alt="Pantalla de inicio del repartidor con paradas, tiempo estimado, distancia y próxima parada"><figcaption>Vista del repartidor: paradas del día, tiempo estimado, distancia y la próxima parada a cubrir.</figcaption></figure>
+
+<h3>7.2 El mapa y el seguimiento</h3>
+<figure class="shot"><img src="img/25-conductor-lista-paradas.jpg" alt="Lista de paradas del repartidor con la primera en curso"><figcaption>La lista del repartidor: la parada en curso se destaca y ofrece <b>Navegar</b> y <b>Completar</b>.</figcaption></figure>
+<p>El recorrido se dibuja sobre el mapa y, con el GPS activo, la posición propia se actualiza sola. Si el navegador pide permiso de ubicación hay que otorgarlo: sin ese permiso el seguimiento no funciona.</p>
+
+<h3>7.3 Navegación paso a paso</h3>
+<figure class="shot"><img src="img/28-recorrido-trazado-conductor.jpg" alt="Mapa del repartidor con el recorrido del dia trazado y las cuatro paradas"><figcaption>El recorrido del día trazado en el teléfono del repartidor, con las paradas numeradas.</figcaption></figure>
+<p>El botón de pantalla completa en el teléfono abre la navegación con voz en Google Maps. La navegación ocurre en esa aplicación, no dentro de Aprilon: no existe un servicio de navegación con voz gratuito para páginas web.</p>
+
+<h3>7.4 Cerrar una parada</h3>
+<p>Al entregar, se marca la parada como completada y queda registrada la fecha y hora. Si la parada tiene verificación, primero hay que ingresar la palabra.</p>
+
+<h3>7.5 Mapa sin señal</h3>
+<figure class="shot"><img src="img/26-conductor-progreso.jpg" alt="Progreso de la ruta 1 de 4 paradas con la primera completada"><figcaption>Al cerrar una parada, la barra de progreso avanza y la siguiente pasa a estar en curso.</figcaption></figure>
+<p>El sistema puede precargar el mapa del día para verlo sin datos, pero <b>solo si está publicado con conexión segura (HTTPS)</b>. Sobre una dirección sin HTTPS el navegador no habilita esa función. Marcar paradas siempre requiere conexión.</p>
+
+<h2 id="s8"><span class="num">8</span>Supervisión e imprevistos</h2>
+<h3>8.1 Reportar</h3>
+<p>El repartidor informa un imprevisto indicando el tipo y un detalle: calle cortada, cliente ausente, desperfecto.</p>
+<h3>8.2 Recibir</h3>
+<figure class="shot"><img src="img/27-imprevisto-form.jpg" alt="Formulario de reporte de imprevisto con el tipo Trafico corte de calle elegido"><figcaption>El repartidor elige el tipo de imprevisto y agrega un detalle.</figcaption></figure>
+<p>El administrador recibe el aviso en su panel, con notificación sonora, sin tener que recargar la pantalla. Cada aviso se marca como leído individualmente, para no perder de vista los pendientes.</p>
+<h3>8.3 Panel</h3>
+<p>La pantalla principal del administrador muestra indicadores del estado real de la operación del día.</p>
+
+<figure class="shot"><img src="img/29-panel-imprevistos.jpg" alt="Panel de imprevistos del administrador con el reporte recibido"><figcaption>El administrador lo recibe al instante, con el tipo, el detalle, quién lo envió y la hora.</figcaption></figure>
+
+<h2 id="s9"><span class="num">9</span>Historial y planificación</h2>
+<h3>9.1 Historial</h3>
+<p>Se pueden consultar las rutas de cualquier fecha, con sus paradas y su estado.</p>
+<figure class="shot"><img src="img/31-historial-actualizado.jpg" alt="Historial de rutas con la ruta del dia en curso arriba"><figcaption>El historial lista las rutas por fecha con sus paradas, distancia, duración y estado.</figcaption></figure>
+
+<h3>9.2 Rutas para días futuros</h3>
+<p>El ícono <b>+</b> al final de la tira de días abre un calendario para programar una ruta en cualquier fecha futura. Se pueden tener <b>varias fechas programadas a la vez</b>, cada una con sus propios puntos, sin que se pisen.</p>
+<div class="card warn"><b>Limitación conocida.</b> Las pestañas de fechas futuras viven en la memoria del navegador: al recargar la página dejan de verse, aunque la ruta siga guardada en el servidor. Volvé a elegir la fecha en el calendario y reaparece.</div>
+
+<h2 id="s10"><span class="num">10</span>Administración de usuarios</h2>
+<p>Funciones exclusivas del jefe.</p>
+<h3>10.1 Altas, cambios y bajas</h3>
+<p>Se crean cuentas indicando usuario, nombre, rol y zona, y se pueden editar o eliminar. Recordá que solo puede existir una cuenta de administrador.</p>
+<figure class="shot"><img src="img/10-jefe-usuarios.jpg" alt="Pantalla Gestionar usuarios con la cuenta de administracion y los conductores"><figcaption>Gestión de usuarios: la cuenta de administración compartida y los conductores.</figcaption></figure>
+
+<h3>10.2 Pedidos de contraseña</h3>
+<p>Los pedidos de restablecimiento se resuelven generando una clave temporal, que se le comunica al usuario. El sistema lo obliga a cambiarla al entrar.</p>
+
+<figure class="shot"><img src="img/11-jefe-contrasenas.jpg" alt="Pantalla Contrasenas con el boton Restablecer por usuario"><figcaption>Pedidos de contraseña: el jefe restablece y el sistema genera la clave temporal.</figcaption></figure>
+
+<h2 id="s11"><span class="num">11</span>Preferencias de interfaz</h2>
+<figure class="shot"><img src="img/30-modo-oscuro.jpg" alt="La aplicacion en modo oscuro con el mapa y los paneles en tonos oscuros"><figcaption>El mismo panel en modo oscuro. El interruptor está al pie de la barra lateral.</figcaption></figure>
+
+<p>El sistema tiene tema claro y oscuro, a elección. El mapa se muestra siempre en modo claro, para que las calles sigan siendo legibles.</p>
+<p>En escritorio, la barra lateral se minimiza a solo íconos con un botón, y la preferencia se recuerda en ese navegador. Las acciones que consultan al servidor muestran un indicador de carga.</p>
+
+<h2 id="s12"><span class="num">12</span>Instalación y configuración</h2>
+<p>Esta sección es para quien instala el sistema, no para el uso diario.</p>
+<h3>12.1 Requisitos del servidor</h3>
+<table>
+  <tr><th>Componente</th><th>Requisito</th></tr>
+  <tr><td>PHP</td><td>Versión 8 o superior, con PDO MySQL, cURL y OpenSSL</td></tr>
+  <tr><td>Base de datos</td><td>MySQL 5.7+ o MariaDB 10.3+, con utf8mb4 e InnoDB</td></tr>
+  <tr><td>Servidor web</td><td>Apache, nginx o IIS con PHP habilitado</td></tr>
+  <tr><td>Servicios externos</td><td>Clave de Google con Geocoding v4, Routes y Places; cuenta SMTP</td></tr>
+  <tr><td>Recursos</td><td>512 MB de RAM y 100 MB de disco; internet saliente</td></tr>
+</table>
+
+<h3>12.2 Base de datos</h3>
+<p>Creá una base vacía e importá los tres archivos de <code>db/</code> <b>en este orden</b>, porque dependen entre sí:</p>
+<ol><li><code>aprilon.sql</code> — usuarios y pedidos de contraseña</li>
+<li><code>rutas.sql</code> — puntos, rutas, paradas y verificaciones</li>
+<li><code>incidentes.sql</code> — imprevistos</li></ol>
+<p>Quedan creados tres usuarios de prueba con una contraseña común: <code>jefe</code>, <code>ventas</code> y <code>expedicion</code>.</p>
+<div class="card warn"><b>Antes de usarlo de verdad</b>, cambiá las contraseñas de las tres cuentas de prueba.</div>
+
+<h3>12.3 Conexión y variables</h3>
+<p>La conexión se elige con una única línea <code>require_once</code> en <code>config/comun.php</code>, que apunta al archivo de conexión del entorno. En <code>.env</code> van la clave de Google y los datos del correo saliente.</p>
+<div class="card"><b>La clave de Google nunca llega al navegador.</b> Todas las llamadas a Google se hacen desde el servidor.</div>
+
+<h3>12.4 Proteger los archivos sensibles</h3>
+<p>Las carpetas <code>config/</code> y <code>db/</code> y los archivos <code>.env</code> y <code>.sql</code> no deben ser accesibles por URL. En IIS eso lo resuelve <code>web.config</code>; <b>en Apache hace falta un <code>.htaccess</code> equivalente</b>, que debe existir antes de publicar el sistema en internet.</p>
+<p>Además, la carpeta <code>uploads/fotos</code> necesita permiso de escritura para las fotos de perfil.</p>
+
+<h2 id="s13"><span class="num">13</span>Resolución de problemas</h2>
+<table>
+  <tr><th>Síntoma</th><th>Causa probable y solución</th></tr>
+  <tr><td>El botón de calcular está gris</td><td>Hay menos de dos puntos cargados. Agregá otro.</td></tr>
+  <tr><td>No aparecen sugerencias de direcciones</td><td>El servidor no está llegando al servicio de Google. Verificá su conexión saliente.</td></tr>
+  <tr><td>El mapa no sigue la posición</td><td>GPS apagado o permiso de ubicación denegado. Habilitalo en la configuración del sitio.</td></tr>
+  <tr><td>No llegan los correos de verificación</td><td>Revisá correo no deseado, la dirección cargada y la configuración SMTP del servidor.</td></tr>
+  <tr><td>La palabra de verificación se rechaza</td><td>La ruta se volvió a publicar y la palabra anterior venció. Usá la del último correo.</td></tr>
+  <tr><td>El mapa no funciona sin señal</td><td>El sistema no está publicado con HTTPS. Es condición para esa función.</td></tr>
+  <tr><td>Desapareció la pestaña de una fecha futura</td><td>Se recargó la página. Volvé a elegir la fecha en el calendario.</td></tr>
+  <tr><td>No deja crear otro administrador</td><td>Es intencional: solo puede existir uno.</td></tr>
+  <tr><td>Cambié algo y sigo viendo lo viejo</td><td>El navegador guarda la página en caché. Recargá forzando la actualización.</td></tr>
+</table>
+
+<footer>
+  Aprilon · Rutas Eficientes — Manual de usuario.
+</footer>
+
+</div>
+</body>
+</html>
