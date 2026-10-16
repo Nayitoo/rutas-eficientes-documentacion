@@ -139,48 +139,44 @@
     </div>
   </section>
 
-  <!-- 4 · Índice de funciones con vista previa -->
+  <!-- 4 · Índice de funciones: cada fila abre su captura al hacer clic -->
   <section class="indice" id="que-hace" aria-labelledby="indice-titulo">
     <h2 id="indice-titulo" class="seccion__titulo" data-split="lines">Qué hace</h2>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+      <symbol id="ico-captura" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="15" rx="2.5"/><circle cx="9" cy="10" r="1.7"/><path d="M4 17.5l4.6-4.6 3.6 3.6 2.8-2.8 5 5"/></symbol>
+    </svg>
     <ul class="indice__lista">
-      <li class="fila" data-preview="img/app/calcular.webp">
-        <h3 class="fila__titulo"><span class="fila__pin" aria-hidden="true"></span><span class="fila__nombre">Recorrido óptimo</span></h3>
+      <li class="fila" data-preview="img/app/calcular.webp" data-alt="Vista previa de la ruta calculada: 22,7 km, 1 h 44 min y cinco paradas sobre el mapa">
+        <h3 class="fila__titulo"><button type="button" class="fila__abrir" aria-haspopup="dialog"><span class="fila__pin" aria-hidden="true"></span><span class="fila__nombre">Recorrido óptimo</span><span class="fila__ico" aria-hidden="true"><svg><use href="#ico-captura"/></svg></span><span class="sr-only">: ver captura</span></button></h3>
         <p class="fila__texto">Reordena las paradas para acortar el recorrido total, con el tráfico en tiempo real.</p>
         <span class="fila__rol">Administración</span>
-        <img class="fila__thumb" src="img/app/calcular.webp" alt="" width="1600" height="900" loading="lazy" decoding="async">
       </li>
-      <li class="fila" data-preview="img/app/verificar.webp">
-        <h3 class="fila__titulo"><span class="fila__pin" aria-hidden="true"></span><span class="fila__nombre">Entrega verificada</span></h3>
+      <li class="fila" data-preview="img/app/verificar.webp" data-alt="Ventana de verificación de entrega donde el repartidor ingresa la palabra recibida por el encargado">
+        <h3 class="fila__titulo"><button type="button" class="fila__abrir" aria-haspopup="dialog"><span class="fila__pin" aria-hidden="true"></span><span class="fila__nombre">Entrega verificada</span><span class="fila__ico" aria-hidden="true"><svg><use href="#ico-captura"/></svg></span><span class="sr-only">: ver captura</span></button></h3>
         <p class="fila__texto">Sin la palabra que recibió el destinatario por email, la parada no se puede cerrar.</p>
         <span class="fila__rol">Repartidor</span>
-        <img class="fila__thumb" src="img/app/verificar.webp" alt="" width="1600" height="900" loading="lazy" decoding="async">
       </li>
-      <li class="fila" data-preview="img/app/imprevistos.webp">
-        <h3 class="fila__titulo"><span class="fila__pin" aria-hidden="true"></span><span class="fila__nombre">Imprevistos al instante</span></h3>
+      <li class="fila" data-preview="img/app/imprevistos.webp" data-alt="Panel de imprevistos del administrador con un aviso de calle cortada enviado por el repartidor">
+        <h3 class="fila__titulo"><button type="button" class="fila__abrir" aria-haspopup="dialog"><span class="fila__pin" aria-hidden="true"></span><span class="fila__nombre">Imprevistos al instante</span><span class="fila__ico" aria-hidden="true"><svg><use href="#ico-captura"/></svg></span><span class="sr-only">: ver captura</span></button></h3>
         <p class="fila__texto">Una calle cortada o un cliente ausente llegan al panel de quien coordina en el momento, con aviso sonoro.</p>
         <span class="fila__rol">Repartidor y administración</span>
-        <img class="fila__thumb" src="img/app/imprevistos.webp" alt="" width="1600" height="900" loading="lazy" decoding="async">
       </li>
-      <li class="fila" data-preview="img/app/agenda.webp">
-        <h3 class="fila__titulo"><span class="fila__pin" aria-hidden="true"></span><span class="fila__nombre">Agenda de clientes</span></h3>
+      <li class="fila" data-preview="img/app/agenda.webp" data-alt="Agenda de lugares con el formulario para guardar un punto nuevo y la lista de clientes guardados">
+        <h3 class="fila__titulo"><button type="button" class="fila__abrir" aria-haspopup="dialog"><span class="fila__pin" aria-hidden="true"></span><span class="fila__nombre">Agenda de clientes</span><span class="fila__ico" aria-hidden="true"><svg><use href="#ico-captura"/></svg></span><span class="sr-only">: ver captura</span></button></h3>
         <p class="fila__texto">Las direcciones frecuentes se guardan con un apodo y se suman a cualquier ruta en dos clics.</p>
         <span class="fila__rol">Administración</span>
-        <img class="fila__thumb" src="img/app/agenda.webp" alt="" width="1600" height="900" loading="lazy" decoding="async">
       </li>
-      <li class="fila" data-preview="img/app/inicio.webp">
-        <h3 class="fila__titulo"><span class="fila__pin" aria-hidden="true"></span><span class="fila__nombre">La semana a la vista</span></h3>
+      <li class="fila" data-preview="img/app/inicio.webp" data-alt="Inicio del administrador con los días de la semana, cada uno con su fecha, y la ruta del viernes publicada">
+        <h3 class="fila__titulo"><button type="button" class="fila__abrir" aria-haspopup="dialog"><span class="fila__pin" aria-hidden="true"></span><span class="fila__nombre">La semana a la vista</span><span class="fila__ico" aria-hidden="true"><svg><use href="#ico-captura"/></svg></span><span class="sr-only">: ver captura</span></button></h3>
         <p class="fila__texto">Cada día muestra su fecha y marca si ya tiene ruta; con el ícono + se programan días futuros.</p>
         <span class="fila__rol">Administración</span>
-        <img class="fila__thumb" src="img/app/inicio.webp" alt="" width="1600" height="900" loading="lazy" decoding="async">
       </li>
-      <li class="fila" data-preview="img/app/historial.webp">
-        <h3 class="fila__titulo"><span class="fila__pin" aria-hidden="true"></span><span class="fila__nombre">Historial de rutas</span></h3>
+      <li class="fila" data-preview="img/app/historial.webp" data-alt="Historial de rutas con cuatro días, sus paradas hechas, la distancia, la duración y el estado">
+        <h3 class="fila__titulo"><button type="button" class="fila__abrir" aria-haspopup="dialog"><span class="fila__pin" aria-hidden="true"></span><span class="fila__nombre">Historial de rutas</span><span class="fila__ico" aria-hidden="true"><svg><use href="#ico-captura"/></svg></span><span class="sr-only">: ver captura</span></button></h3>
         <p class="fila__texto">Las rutas de cualquier fecha, con sus paradas, la distancia, la duración y el estado.</p>
         <span class="fila__rol">Administración y jefatura</span>
-        <img class="fila__thumb" src="img/app/historial.webp" alt="" width="1600" height="900" loading="lazy" decoding="async">
       </li>
     </ul>
-    <div class="preview" aria-hidden="true"><img alt="" src="img/app/calcular.webp" width="1600" height="900"></div>
   </section>
 
   <!-- 5 · En la calle: el teléfono del repartidor -->
@@ -266,6 +262,15 @@
     <a href="#top" class="pie__arriba">Volver arriba</a>
   </div>
 </footer>
+
+<!-- Captura de "Qué hace": se abre solo al hacer clic en una fila -->
+<dialog class="visor" id="visor" aria-labelledby="visor-titulo">
+  <figure class="visor__marco">
+    <img class="visor__img" src="img/app/calcular.webp" alt="" width="1600" height="900" decoding="async">
+    <figcaption class="visor__pie"><b id="visor-titulo">Recorrido óptimo</b><span class="visor__texto"></span></figcaption>
+  </figure>
+  <button type="button" class="visor__cerrar" aria-label="Cerrar la captura"><span aria-hidden="true">×</span></button>
+</dialog>
 
 <script src="js/vendor/gsap.min.js" defer></script>
 <script src="js/vendor/ScrollTrigger.min.js" defer></script>

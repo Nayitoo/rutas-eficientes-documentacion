@@ -62,7 +62,7 @@ Screenshot:  el titular grande junto al recorrido verde ya trazado, con 22,7 km 
 1 Hero escena    [titular 5 col | mapa de la ruta 7 col, sticky]       estado: km · min · paradas
 2 Declaración    [párrafo grande sobre verde cartel, 9 col]
 3 Narrativa      [captura sticky 7 col | cuatro capítulos 4 col]      Cargar · Calcular · Publicar · Entregar
-4 Índice         [filas de funciones a todo el ancho, vista previa que sigue al puntero]
+4 Índice         [filas de funciones a todo el ancho, ícono de captura; la captura se abre al hacer clic]
 5 Par asimétrico [tres teléfonos escalonados | texto 4 col]           En la calle
 6 Datos          [cuatro numerales grandes]                            31 · 7 · 3 · 1
 7 Preguntas      [grupos 3 col | acordeón 8 col]
@@ -73,6 +73,11 @@ Screenshot:  el titular grande junto al recorrido verde ya trazado, con 22,7 km 
 **Hovers (una solución por rol):** botones con relleno que entra desde el lado del puntero; enlaces
 de navegación con una línea que se dibuja como la de un carril; filas del índice que se corren y
 muestran un pin; flechas que avanzan en su dirección.
+
+**Capturas del índice (16/10/2026, pedido del usuario):** la captura de cada función ya no aparece
+al pasar el mouse. Se abre solo al hacer clic en la fila, en un `<dialog>` (se cierra con la ×, Esc
+o clic en el fondo). Al lado de cada título hay un ícono chico de imagen que avisa que hay una
+captura. En el teléfono las miniaturas fijas también se sacaron: la fila abre el mismo visor.
 
 **Estado en reposo:** un punto (el vehículo) recorre la ruta óptima en bucle mientras la escena está
 en pantalla; se pausa fuera de pantalla y no existe con movimiento reducido.

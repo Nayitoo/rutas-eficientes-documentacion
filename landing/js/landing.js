@@ -32,6 +32,28 @@
     });
   }
 
+  /* ---------- 4 · índice: la captura se abre solo al hacer clic en la fila ---------- */
+  // va antes del corte de GSAP: el visor funciona aunque no carguen las librerías
+  (function visor() {
+    var dlg = $('#visor'), lista = $('.indice__lista');
+    if (!dlg || !lista) return;
+    var img = $('.visor__img', dlg), titulo = $('#visor-titulo'), texto = $('.visor__texto', dlg);
+    function abrir(fila) {
+      img.src = fila.getAttribute('data-preview');
+      img.alt = fila.getAttribute('data-alt') || '';
+      titulo.textContent = $('.fila__nombre', fila).textContent;
+      texto.textContent = $('.fila__texto', fila).textContent;
+      if (lenis) lenis.stop();
+      if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
+    }
+    function cerrar() { if (dlg.close) dlg.close(); else { dlg.removeAttribute('open'); if (lenis) lenis.start(); } }
+    // toda la fila es clicable; el botón del título la hace accesible con teclado
+    lista.addEventListener('click', function (e) { var f = e.target.closest('.fila'); if (f) abrir(f); });
+    $('.visor__cerrar', dlg).addEventListener('click', cerrar);
+    dlg.addEventListener('click', function (e) { if (e.target === dlg) cerrar(); });   // clic en el fondo oscuro
+    dlg.addEventListener('close', function () { if (lenis) lenis.start(); });
+  })();
+
   if (!window.gsap || !window.ScrollTrigger) return;   // sin librerías: queda el estado final estático
   gsap.registerPlugin(ScrollTrigger);
   if (window.SplitText) gsap.registerPlugin(SplitText);
@@ -204,31 +226,6 @@
     });
   }
 
-  /* ---------- 4 · índice: la captura sigue al puntero ---------- */
-  function indice() {
-    var prev = $('.preview'), img = prev && prev.querySelector('img'), lista = $('.indice__lista');
-    if (!prev || touch || !lista) return;
-    var x = gsap.quickTo(prev, 'x', { duration: 0.6, ease: ease.soft });
-    var y = gsap.quickTo(prev, 'y', { duration: 0.6, ease: ease.soft });
-    var dentro = false, px = 0, py = 0;
-    function mover(e) { px = e.clientX; py = e.clientY; x(px + 28); y(py - prev.offsetHeight / 2); }
-    function mostrar(src) {
-      if (img.getAttribute('src') !== src) img.setAttribute('src', src);
-      if (!dentro) { dentro = true; gsap.to(prev, { autoAlpha: 1, scale: 1, duration: reduced ? 0 : 0.5, ease: ease.out, overwrite: 'auto' }); }
-    }
-    function ocultar() { dentro = false; gsap.to(prev, { autoAlpha: 0, scale: 0.86, duration: reduced ? 0 : 0.35, ease: ease.soft, overwrite: 'auto' }); }
-    lista.addEventListener('pointermove', mover, { passive: true });
-    $$('.fila', lista).forEach(function (f) { f.addEventListener('pointerenter', function () { mostrar(f.getAttribute('data-preview')); }); });
-    lista.addEventListener('pointerleave', ocultar);
-    // si la página se desplaza bajo un puntero quieto, pointerleave no llega: se comprueba al hacer scroll
-    ScrollTrigger.create({ start: 0, end: 'max', onUpdate: function () {
-      if (!dentro) return;
-      var el = document.elementFromPoint(px, py);
-      if (!el || !lista.contains(el)) ocultar();
-      else { var f = el.closest('.fila'); if (f) mostrar(f.getAttribute('data-preview')); }
-    } });
-  }
-
   /* ---------- botones: el relleno entra desde el lado del puntero ---------- */
   function botones() {
     if (touch || reduced) return;
@@ -302,7 +299,6 @@
     revelados();
     escena();
     capitulos();
-    indice();
     botones();
     contadores();
     menu();
