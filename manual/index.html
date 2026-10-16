@@ -2,23 +2,25 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
+<meta name="description" content="Manual de usuario de Rutas Eficientes: roles, armado y publicación de rutas, verificación de entregas, operación del repartidor e instalación.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="favicon.png">
-<title>Aprilon — Manual de usuario</title>
+<title>Manual de usuario · Rutas Eficientes</title>
 <style>
   :root{
-    --brand:#00B359; --brand-dark:#007a3d; --brand-soft:#e6f9ef; --ink:#1c1f1d; --muted:#5c635e;
+    --brand:#119874; --brand-dark:#0B6E55; --brand-soft:#E4F5EE; --ink:#1c1f1d; --muted:#5c635e;
     --line:#dfe3e0; --bg:#eaefe9; --code:#f3f5f3; --warn:#8a5a12; --warn-soft:#fdf3e2;
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 "Manrope","Segoe UI",system-ui,sans-serif}
   .page{max-width:840px;margin:0 auto;padding:48px 24px 80px}
   header.cover{border-bottom:3px solid var(--brand);padding-bottom:26px;margin-bottom:14px}
-  .kicker{color:var(--brand);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:12px}
+  .kicker{display:flex;align-items:center;gap:10px;color:var(--brand-dark);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:12px}
+  .kicker img{width:44px;height:auto}
   h1{font-size:36px;line-height:1.12;margin:8px 0 6px}
   h2{font-size:25px;margin:46px 0 6px;padding-top:22px;border-top:1px solid var(--line)}
   h2 .num{color:var(--brand);font-weight:800;margin-right:10px}
-  h3{font-size:18.5px;margin:28px 0 8px;color:var(--brand)}
+  h3{font-size:18.5px;margin:28px 0 8px;color:var(--brand-dark)}
   h4{font-size:16px;margin:20px 0 6px}
   p{margin:10px 0}
   code{background:var(--code);padding:2px 6px;border-radius:4px;font:14px/1.4 "JetBrains Mono",Consolas,monospace}
@@ -36,6 +38,9 @@
   nav.toc a{color:var(--ink);text-decoration:none}
   .shot{margin:18px 0}
   .shot img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:10px}
+  .shot.phone img{max-width:320px;margin:0 auto}
+  .shot.phone figcaption{text-align:center}
+  .shot.detalle img{max-width:420px}
   .shot figcaption{margin-top:8px;font-size:15px;color:var(--muted)}
   footer{margin-top:50px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
   @media (max-width:640px){ .page{padding:28px 16px 50px} h1{font-size:28px} nav.toc ol{columns:1} }
@@ -53,10 +58,10 @@
 </style>
 </head>
 <body>
-<div class="page">
+<main class="page">
 
 <header class="cover">
-  <div class="kicker">Aprilon · Rutas Eficientes</div>
+  <div class="kicker"><img src="../logo.png" alt="">Rutas Eficientes</div>
   <h1>Manual de usuario</h1>
 </header>
 
@@ -80,20 +85,20 @@
 </nav>
 
 <h2 id="s1"><span class="num">1</span>Introducción</h2>
-<p>Aprilon es el sistema de gestión de rutas de reparto de Aprilon Textiles. Resuelve un problema concreto: cuando el recorrido diario se arma de memoria, se recorren kilómetros de más, no queda registro de lo entregado y cualquier imprevisto se entera tarde.</p>
+<p>Rutas Eficientes es un sistema de gestión de rutas de reparto para empresas que entregan su propia mercadería. Resuelve un problema concreto: cuando el recorrido diario se arma de memoria, se recorren kilómetros de más, no queda registro de lo entregado y cualquier imprevisto se entera tarde.</p>
 <p>El sistema cubre el ciclo completo. Quien coordina carga las direcciones del día; el sistema calcula el orden más conveniente de las paradas teniendo en cuenta el tráfico; la ruta se publica y aparece en el teléfono del repartidor; y cada entrega se cierra con una constancia.</p>
 <p>Este manual documenta todas las funciones. Si es tu primer contacto con el sistema, empezá por la guía de inicio rápido, que cubre lo indispensable en diez minutos.</p>
 
 <h3>Qué necesitás</h3>
-<p>Nada que instalar: el sistema se usa desde el navegador. En la computadora conviene una pantalla de 1024 píxeles de ancho o más para la vista completa; en el teléfono del repartidor hace falta GPS activo y datos móviles durante el recorrido.</p>
+<p>Nada que instalar: el sistema se usa desde el navegador. Si se prefiere, se puede agregar como aplicación en el teléfono o en la computadora desde el aviso «Instalar Rutas Eficientes» que aparece al entrar (en iPhone, con <b>Compartir</b> y <b>Agregar a inicio</b>). En la computadora conviene una pantalla de 1024 píxeles de ancho o más para la vista completa; en el teléfono del repartidor hace falta GPS activo y datos móviles durante el recorrido.</p>
 
 <h2 id="s2"><span class="num">2</span>Roles y permisos</h2>
 <p>El sistema tiene tres roles, y cada uno ve una aplicación distinta al ingresar.</p>
 <table>
   <tr><th>Rol</th><th>Quién es</th><th>Qué puede hacer</th></tr>
   <tr><td><b>Jefe</b></td><td>La dirección de la empresa</td><td>Crear, editar y eliminar cuentas de usuario; resolver pedidos de contraseña.</td></tr>
-  <tr><td><b>Administrador</b></td><td>Quien coordina el reparto (cuenta <code>ventas</code>)</td><td>Gestionar la agenda de clientes, armar y publicar rutas, seguir la operación y atender imprevistos.</td></tr>
-  <tr><td><b>Conductor</b></td><td>Quien reparte (cuenta <code>expedicion</code>)</td><td>Ver la ruta del día, seguirla en el mapa, cerrar paradas y reportar imprevistos.</td></tr>
+  <tr><td><b>Administrador</b></td><td>Quien coordina el reparto (cuenta <code>admin</code>)</td><td>Gestionar la agenda de clientes, armar y publicar rutas, seguir la operación y atender imprevistos.</td></tr>
+  <tr><td><b>Conductor</b></td><td>Quien reparte (cuenta <code>usuario</code>)</td><td>Ver la ruta del día, seguirla en el mapa, cerrar paradas y reportar imprevistos.</td></tr>
 </table>
 <div class="card"><b>Dos reglas de diseño.</b> Existe una sola cuenta de administrador por instalación, garantizada por la base de datos. Y el sistema opera con un solo repartidor: no hay asignación de rutas por persona, cualquier ruta publicada la ve quien entre con ese rol.</div>
 
@@ -102,7 +107,7 @@
 <h2 id="s3"><span class="num">3</span>Ingreso y cuenta</h2>
 <h3>3.1 Iniciar sesión</h3>
 <p>Ingresá tu usuario y contraseña. El sistema valida las credenciales y te lleva a la pantalla de tu rol. Las contraseñas se guardan cifradas: nadie, ni el jefe, puede ver tu contraseña actual.</p>
-<figure class="shot"><img src="img/01-login.jpg" alt="Pantalla de ingreso de Aprilon con los campos de usuario y contraseña"><figcaption>Pantalla de ingreso. Debajo del botón está el acceso a «¿Olvidaste tu contraseña?».</figcaption></figure>
+<figure class="shot"><img src="img/01-login.jpg" alt="Pantalla de ingreso de Rutas Eficientes con los campos de usuario y contraseña"><figcaption>Pantalla de ingreso. Debajo del botón está el acceso a «¿Olvidaste tu contraseña?».</figcaption></figure>
 
 <figure class="shot"><img src="img/15-olvide-contrasena.jpg" alt="Formulario Olvide mi contrasena con usuario, clave temporal y nueva contrasena"><figcaption>El formulario de restablecimiento: si todavía no tenés clave temporal, «Notificar al jefe» le manda el pedido.</figcaption></figure>
 
@@ -130,11 +135,12 @@
 
 <h3>4.2 Autocompletado de direcciones</h3>
 <p>Mientras escribís aparecen sugerencias reales, y al elegir una el sistema resuelve sus coordenadas exactas. Mientras busca se muestra el indicador «Buscando…». Elegí siempre una sugerencia de la lista en lugar de escribir la dirección a mano: sin coordenadas el punto no se puede incluir en el cálculo.</p>
+<figure class="shot"><img src="img/04b-autocompletado.jpg" alt="Campo Dirección con la lista de sugerencias para Av. Boedo 870"><figcaption>Al escribir «Av. Boedo 870» aparecen las direcciones posibles; se elige la que corresponde.</figcaption></figure>
 
 <h3>4.3 El panel de la ruta</h3>
 <p>A la derecha aparece el panel <b>En la ruta</b> con los puntos que llevás cargados. Se muestra recién cuando agregás el primero, y se puede minimizar a una franja angosta para ganar espacio; al minimizarlo, el contador destella cuando entra un punto nuevo.</p>
 
-<figure class="shot"><img src="img/17-panel-en-la-ruta.jpg" alt="Panel En la ruta a la derecha con el primer punto cargado"><figcaption>El panel <b>En la ruta</b> aparece con el primer punto. Con uno solo, «Calcular ruta óptima» sigue deshabilitado.</figcaption></figure>
+<figure class="shot detalle"><img src="img/17-panel-en-la-ruta.jpg" alt="Panel En la ruta con el primer punto cargado"><figcaption>El panel <b>En la ruta</b> aparece con el primer punto. Con uno solo, «Calcular ruta óptima» sigue deshabilitado.</figcaption></figure>
 
 <h3>4.4 Administrar la agenda</h3>
 <p>La pantalla de lugares guardados lista los clientes frecuentes. Al eliminar uno el sistema pide confirmación, porque la acción no se deshace.</p>
@@ -145,15 +151,23 @@
 <h3>5.1 Calcular la ruta óptima</h3>
 <p>Con dos puntos o más se habilita <b>Calcular ruta óptima</b>. El sistema consulta el servicio de rutas y devuelve el recorrido más conveniente, <b>reordenando las paradas</b> y considerando el tráfico del momento.</p>
 <div class="card"><b>El orden que cargaste no es el orden final.</b> Que las paradas cambien de posición no es un error: es la función central del sistema. Cada tramo queda registrado con su distancia y su duración.</div>
-<figure class="shot"><img src="img/18-cuatro-puntos-listos.jpg" alt="Cuatro puntos cargados y el boton Calcular ruta optima habilitado"><figcaption>Con cuatro puntos cargados el botón <b>Calcular ruta óptima</b> queda habilitado.</figcaption></figure>
-<figure class="shot"><img src="img/19-ruta-trazada-mapa.jpg" alt="Vista previa con la ruta trazada sobre el mapa y las cuatro paradas numeradas"><figcaption>La ruta trazada sobre el mapa: 33,0 km, 1 h 16 min y cuatro paradas, ya reordenadas por el sistema.</figcaption></figure>
-<figure class="shot"><img src="img/20-vista-previa-paradas.jpg" alt="Vista previa con la lista de paradas en el orden optimo y el boton Publicar" ><figcaption>Debajo del mapa, las paradas en el orden óptimo y el botón para publicar la ruta.</figcaption></figure>
+<figure class="shot"><img src="img/18-puntos-listos.jpg" alt="Cinco puntos cargados en el panel En la ruta y el botón Calcular ruta óptima habilitado"><figcaption>Con cinco puntos cargados el botón <b>Calcular ruta óptima</b> queda habilitado.</figcaption></figure>
+<figure class="shot"><img src="img/19-ruta-trazada-mapa.jpg" alt="Vista previa con la ruta trazada sobre el mapa y las cinco paradas numeradas"><figcaption>La vista previa: 22,7 km, 1 h 44 min y cinco paradas, ya reordenadas por el sistema. Todavía no está publicada.</figcaption></figure>
+<figure class="shot"><img src="img/20-vista-previa-paradas.jpg" alt="Vista previa con la lista de paradas en el orden óptimo y el botón Publicar para el conductor" ><figcaption>Debajo del mapa, las paradas en el orden óptimo y el botón para publicar la ruta.</figcaption></figure>
+<h4>Mover el mapa de la vista previa</h4>
+<p>Los mapas que aparecen dentro de una pantalla están protegidos contra movimientos accidentales, para que recorrer la página con la rueda del mouse o con el dedo no desplace el mapa sin querer:</p>
+<ul>
+  <li><b>En la computadora</b>, para arrastrar el mapa o acercarlo con la rueda hay que mantener presionada la tecla <b>Ctrl</b> (<b>⌘</b> en Mac). Los botones <b>+</b> y <b>−</b> funcionan siempre.</li>
+  <li><b>En el teléfono</b>, un dedo desplaza la página; el mapa se mueve y se acerca <b>con dos dedos</b>.</li>
+</ul>
+<p>Si se intenta mover el mapa sin el gesto correcto, aparece un aviso sobre el mapa. El mapa de pantalla completa no tiene esta protección: ahí se mueve libremente.</p>
+<figure class="shot"><img src="img/33-mapa-bloqueado.jpg" alt="Mapa de la vista previa con el aviso Mantené presionada la tecla Ctrl para mover el mapa"><figcaption>El aviso que aparece al usar la rueda sobre el mapa sin presionar Ctrl.</figcaption></figure>
 
 <h3>5.2 Publicar</h3>
 <p>Publicar la ruta la deja disponible para el repartidor y dispara los correos de verificación de las paradas que tengan email.</p>
 
 <h3>5.3 Despublicar y corregir</h3>
-<figure class="shot"><img src="img/21-ruta-publicada.jpg" alt="Inicio del administrador con la ruta publicada del dia"><figcaption>Publicada: el contador pasa a 4 puntos y la ruta queda rotulada como <b>RUTA PUBLICADA</b>.</figcaption></figure>
+<figure class="shot"><img src="img/21-ruta-publicada.jpg" alt="Inicio del administrador con la ruta publicada del dia"><figcaption>Publicada: el contador pasa a 5 puntos y la ruta queda rotulada como <b>RUTA PUBLICADA</b>.</figcaption></figure>
 <p>Una ruta publicada se puede despublicar, y deja de verse en el teléfono. Si quedaron rutas duplicadas del día, existe la opción de borrar todas las rutas de la fecha actual, cualquiera sea su estado, para empezar de cero.</p>
 <div class="card warn"><b>Cuidado.</b> Borrar las rutas del día alcanza a todas las de esa fecha, incluidas las completadas, y no se puede deshacer.</div>
 
@@ -161,19 +175,20 @@
 <p>La ruta se puede compartir como texto plano, para pasarla por mensajería o dejarla registrada fuera del sistema.</p>
 
 <h2 id="s6"><span class="num">6</span>Verificación de entregas</h2>
-<figure class="shot"><img src="img/22-ruta-publicada-paradas.jpg" alt="Lista de paradas publicadas con los iconos de compartir y borrar"><figcaption>Las cuatro paradas publicadas. Arriba a la derecha, los íconos para compartir y para borrar las rutas del día.</figcaption></figure>
+<figure class="shot"><img src="img/22-ruta-publicada-paradas.jpg" alt="Lista de paradas publicadas con los iconos de compartir y borrar"><figcaption>Las cinco paradas publicadas. Arriba a la derecha, los íconos para compartir y para borrar las rutas del día.</figcaption></figure>
 <p>Es la función que convierte una entrega en un hecho comprobable.</p>
 <ol>
   <li>Al cargar un punto, completás el <b>email del destinatario</b>. Es opcional.</li>
   <li>Al publicar la ruta, el sistema genera una <b>palabra al azar</b> por cada parada con email y la envía por correo.</li>
   <li>Al entregar, el repartidor le pide esa palabra a quien recibe y la ingresa. Sin la palabra correcta, esa parada no se puede cerrar.</li>
 </ol>
+<figure class="shot"><img src="img/34-palabra-verificacion.jpg" alt="Ventana Verificación de entrega con el campo Palabra de verificación completado"><figcaption>Al tocar <b>Completar</b> en una parada con verificación, el repartidor ingresa la palabra que recibió el encargado.</figcaption></figure>
 <p>Cada intento fallido queda contabilizado. Si la ruta se vuelve a publicar, se genera una palabra nueva y la anterior deja de servir.</p>
 <div class="card warn"><b>Solo por email.</b> No hay envío por SMS ni WhatsApp: esos canales requieren contratar un proveedor externo pago.</div>
 
 <h2 id="s7"><span class="num">7</span>Operación del repartidor</h2>
 <h3>7.1 La ruta del día</h3>
-<figure class="shot"><img src="img/23-conductor-ruta-dia.jpg" alt="Inicio del repartidor con 4 paradas, 1 h 16 min y 33 km"><figcaption>Inicio del repartidor con la ruta recibida: paradas, tiempo estimado, distancia y próxima parada.</figcaption></figure>
+<figure class="shot phone"><img src="img/23-conductor-ruta-dia.jpg" alt="Inicio del repartidor en el teléfono con 5 paradas, 1 h 44 min y 22,7 km"><figcaption>Inicio del repartidor en el teléfono: paradas, tiempo estimado, distancia y próxima parada.</figcaption></figure>
 <p>Al ingresar, el repartidor ve la ruta publicada con sus paradas en el orden calculado.</p>
 <figure class="shot"><img src="img/12-conductor-inicio.jpg" alt="Pantalla de inicio del repartidor con paradas, tiempo estimado, distancia y próxima parada"><figcaption>Vista del repartidor: paradas del día, tiempo estimado, distancia y la próxima parada a cubrir.</figcaption></figure>
 
@@ -182,21 +197,21 @@
 <p>El recorrido se dibuja sobre el mapa y, con el GPS activo, la posición propia se actualiza sola. Si el navegador pide permiso de ubicación hay que otorgarlo: sin ese permiso el seguimiento no funciona.</p>
 
 <h3>7.3 Navegación paso a paso</h3>
-<figure class="shot"><img src="img/28-recorrido-trazado-conductor.jpg" alt="Mapa del repartidor con el recorrido del dia trazado y las cuatro paradas"><figcaption>El recorrido del día trazado en el teléfono del repartidor, con las paradas numeradas.</figcaption></figure>
-<p>El botón de pantalla completa en el teléfono abre la navegación con voz en Google Maps. La navegación ocurre en esa aplicación, no dentro de Aprilon: no existe un servicio de navegación con voz gratuito para páginas web.</p>
+<figure class="shot phone"><img src="img/28-recorrido-trazado-conductor.jpg" alt="Mapa del repartidor con el recorrido del día trazado y las cinco paradas"><figcaption>El recorrido del día trazado en el teléfono del repartidor, con las paradas numeradas.</figcaption></figure>
+<p>El botón de pantalla completa en el teléfono abre la navegación con voz en Google Maps. La navegación ocurre en esa aplicación, no dentro de Rutas Eficientes: no existe un servicio de navegación con voz gratuito para páginas web.</p>
 
 <h3>7.4 Cerrar una parada</h3>
 <p>Al entregar, se marca la parada como completada y queda registrada la fecha y hora. Si la parada tiene verificación, primero hay que ingresar la palabra.</p>
 
 <h3>7.5 Mapa sin señal</h3>
-<figure class="shot"><img src="img/26-conductor-progreso.jpg" alt="Progreso de la ruta 1 de 4 paradas con la primera completada"><figcaption>Al cerrar una parada, la barra de progreso avanza y la siguiente pasa a estar en curso.</figcaption></figure>
+<figure class="shot"><img src="img/26-conductor-progreso.jpg" alt="Progreso de la ruta, 1 de 5 paradas, con la primera completada"><figcaption>Al cerrar una parada, la barra de progreso avanza y la siguiente pasa a estar en curso.</figcaption></figure>
 <p>El sistema puede precargar el mapa del día para verlo sin datos, pero <b>solo si está publicado con conexión segura (HTTPS)</b>. Sobre una dirección sin HTTPS el navegador no habilita esa función. Marcar paradas siempre requiere conexión.</p>
 
 <h2 id="s8"><span class="num">8</span>Supervisión e imprevistos</h2>
 <h3>8.1 Reportar</h3>
 <p>El repartidor informa un imprevisto indicando el tipo y un detalle: calle cortada, cliente ausente, desperfecto.</p>
 <h3>8.2 Recibir</h3>
-<figure class="shot"><img src="img/27-imprevisto-form.jpg" alt="Formulario de reporte de imprevisto con el tipo Trafico corte de calle elegido"><figcaption>El repartidor elige el tipo de imprevisto y agrega un detalle.</figcaption></figure>
+<figure class="shot phone"><img src="img/27-imprevisto-form.jpg" alt="Formulario de reporte de imprevisto en el teléfono con el tipo Cliente ausente elegido"><figcaption>El repartidor elige el tipo de imprevisto y agrega un detalle.</figcaption></figure>
 <p>El administrador recibe el aviso en su panel, con notificación sonora, sin tener que recargar la pantalla. Cada aviso se marca como leído individualmente, para no perder de vista los pendientes.</p>
 <h3>8.3 Panel</h3>
 <p>La pantalla principal del administrador muestra indicadores del estado real de la operación del día.</p>
@@ -206,9 +221,10 @@
 <h2 id="s9"><span class="num">9</span>Historial y planificación</h2>
 <h3>9.1 Historial</h3>
 <p>Se pueden consultar las rutas de cualquier fecha, con sus paradas y su estado.</p>
-<figure class="shot"><img src="img/31-historial-actualizado.jpg" alt="Historial de rutas con la ruta del dia en curso arriba"><figcaption>El historial lista las rutas por fecha con sus paradas, distancia, duración y estado.</figcaption></figure>
+<figure class="shot phone"><img src="img/31-historial-actualizado.jpg" alt="Historial de rutas en el teléfono con la ruta del día en curso arriba"><figcaption>El historial lista las rutas por fecha con sus paradas, distancia, duración y estado.</figcaption></figure>
 
 <h3>9.2 Rutas para días futuros</h3>
+<p>La tira de días de la pantalla de inicio muestra la semana en curso, de lunes a sábado, con la <b>fecha de cada día en formato DD/MM</b> debajo de su nombre.</p>
 <p>El ícono <b>+</b> al final de la tira de días abre un calendario para programar una ruta en cualquier fecha futura. Se pueden tener <b>varias fechas programadas a la vez</b>, cada una con sus propios puntos, sin que se pisen.</p>
 <div class="card"><b>Las fechas programadas se conservan.</b> Al volver a entrar o recargar la página, las pestañas de los días futuros que ya tienen ruta guardada se vuelven a mostrar solas: el selector las reconstruye leyendo el servidor.</div>
 
@@ -243,10 +259,10 @@
 
 <h3>12.2 Base de datos</h3>
 <p>Creá una base vacía e importá los tres archivos de <code>db/</code> <b>en este orden</b>, porque dependen entre sí:</p>
-<ol><li><code>aprilon.sql</code> — usuarios y pedidos de contraseña</li>
+<ol><li><code>rutas_eficientes.sql</code> — usuarios y pedidos de contraseña</li>
 <li><code>rutas.sql</code> — puntos, rutas, paradas y verificaciones</li>
 <li><code>incidentes.sql</code> — imprevistos</li></ol>
-<p>Quedan creados tres usuarios de prueba con una contraseña común: <code>jefe</code>, <code>ventas</code> y <code>expedicion</code>.</p>
+<p>Quedan creados tres usuarios de prueba con una contraseña común: <code>jefe</code>, <code>admin</code> y <code>usuario</code>.</p>
 <div class="card warn"><b>Antes de usarlo de verdad</b>, cambiá las contraseñas de las tres cuentas de prueba.</div>
 
 <h3>12.3 Conexión y variables</h3>
@@ -266,15 +282,16 @@
   <tr><td>No llegan los correos de verificación</td><td>Revisá correo no deseado, la dirección cargada y la configuración SMTP del servidor.</td></tr>
   <tr><td>La palabra de verificación se rechaza</td><td>La ruta se volvió a publicar y la palabra anterior venció. Usá la del último correo.</td></tr>
   <tr><td>El mapa no funciona sin señal</td><td>El sistema no está publicado con HTTPS. Es condición para esa función.</td></tr>
-  <tr><td>Desapareció la pestaña de una fecha futura</td><td>Se recargó la página. Volvé a elegir la fecha en el calendario.</td></tr>
+  <tr><td>No aparece la pestaña de una fecha futura</td><td>Las fechas con ruta guardada se reconstruyen solas al entrar. Si no aparece, elegila de nuevo desde el ícono <b>+</b> del calendario: sus puntos siguen guardados.</td></tr>
+  <tr><td>El mapa de una pantalla no se mueve al arrastrarlo</td><td>Es intencional: en la computadora mantené presionada Ctrl; en el teléfono usá dos dedos. Ver la sección 5.1.</td></tr>
   <tr><td>No deja crear otro administrador</td><td>Es intencional: solo puede existir uno.</td></tr>
   <tr><td>Cambié algo y sigo viendo lo viejo</td><td>El navegador guarda la página en caché. Recargá forzando la actualización.</td></tr>
 </table>
 
 <footer>
-  Aprilon · Rutas Eficientes — Manual de usuario.
+  Rutas Eficientes · Manual de usuario.
 </footer>
 
-</div>
+</main>
 </body>
 </html>

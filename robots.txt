@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nayitoo.github.io/rutas-eficientes-documentacion/sitemap.xml

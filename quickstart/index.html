@@ -2,9 +2,10 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
+<meta name="description" content="Guía de inicio rápido de Rutas Eficientes y preguntas frecuentes: cómo cargar puntos, calcular la ruta óptima, publicarla y entregar.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="favicon.png">
-<title>Aprilon — Guía de inicio rápido y Preguntas frecuentes</title>
+<title>Guía de inicio rápido y Preguntas frecuentes · Rutas Eficientes</title>
 <style>
 :root{
   --bg:#eaefe9;
@@ -16,11 +17,11 @@
   --ink-title:#111416;
   --line:#e3e6e8;
   --line-soft:#eef0f2;
-  --accent:#00B359;
-  --accent-strong:#007a3d;
-  --accent-bg:#e6f9ef;
-  --accent-slate:#00B359;
-  --accent-slate-bg:#e6f9ef;
+  --accent:#0B7A5C;
+  --accent-strong:#0B6E55;
+  --accent-bg:#E4F5EE;
+  --accent-slate:#0B7A5C;
+  --accent-slate-bg:#E4F5EE;
   --radius:12px;
   color-scheme: light;
 }
@@ -43,7 +44,8 @@ a:hover{text-decoration:underline}
 
 /* ---------- Hero ---------- */
 .hero{padding-bottom:32px;margin-bottom:36px;border-bottom:1px solid var(--line)}
-.hero-eyebrow{font-size:12.5px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.hero-eyebrow{display:flex;align-items:center;gap:10px;font-size:12.5px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.hero-eyebrow img{width:44px;height:auto}
 .hero-title{font-size:clamp(30px,5vw,42px);font-weight:800;margin:0 0 14px;letter-spacing:-.5px;color:var(--ink-title)}
 .hero-lead{font-size:16.5px;color:var(--ink-soft);max-width:65ch;margin:0}
 
@@ -88,6 +90,8 @@ ol.steps>li:before{content:counter(s);position:absolute;left:0;top:16px;width:34
 .shot img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:10px}
 .shot figcaption{margin-top:8px;font-size:12.5px;color:var(--ink-faint)}
 .shot-grid{display:grid;grid-template-columns:1fr;gap:18px;margin:18px 0 6px}
+.shot.phone img{max-width:300px;margin:0 auto}
+.shot.phone figcaption{text-align:center}
 .shot-grid .shot{margin:0}
 .faq-answer .shot img{border-radius:8px}
 
@@ -129,10 +133,10 @@ ol.steps>li:before{content:counter(s);position:absolute;left:0;top:16px;width:34
 </style>
 </head>
 <body>
-<div class="page">
+<main class="page">
 
 <header class="hero">
-  <div class="hero-eyebrow">Aprilon · Rutas Eficientes</div>
+  <div class="hero-eyebrow"><img src="../logo.png" alt="">Rutas Eficientes</div>
   <h1 class="hero-title">Guía de inicio rápido y Preguntas frecuentes</h1>
 </header>
 
@@ -152,14 +156,14 @@ ol.steps>li:before{content:counter(s);position:absolute;left:0;top:16px;width:34
     </div>
 
     <h3 class="sub-h3">Configuración inicial (una sola vez)</h3>
-    <p>Si sos quien instala el sistema, necesitás un servidor con PHP 8 y MySQL, importar los tres archivos de <code>db/</code> en ese orden —<code>aprilon.sql</code>, <code>rutas.sql</code>, <code>incidentes.sql</code>— y completar el archivo <code>.env</code> con la clave de Google y los datos del correo saliente. Si el sistema ya está funcionando, saltá directo al paso 1.</p>
+    <p>Si sos quien instala el sistema, necesitás un servidor con PHP 8 y MySQL, importar los tres archivos de <code>db/</code> en ese orden (<code>rutas_eficientes.sql</code>, <code>rutas.sql</code>, <code>incidentes.sql</code>) y completar el archivo <code>.env</code> con la clave de Google y los datos del correo saliente. Si el sistema ya está funcionando, saltá directo al paso 1.</p>
 
     <h3 class="sub-h3">Las tres acciones clave</h3>
     <ol class="steps">
       <li><span class="step-title">Ingresá y reconocé tu rol</span>
           Escribí tu usuario y contraseña. El sistema te lleva a la pantalla que corresponde a tu rol: el <strong>administrador</strong> arma las rutas, el <strong>conductor</strong> las recorre, el <strong>jefe</strong> gestiona las cuentas. Si es tu primer ingreso con una clave temporal, el sistema te va a pedir que la cambies.
-          <figure class="shot"><img src="img/01-login.jpg" alt="Pantalla de inicio de sesión de Aprilon"><figcaption>Pantalla de ingreso. Debajo del botón está el acceso a «¿Olvidaste tu contraseña?».</figcaption></figure>
-          <figure class="shot"><img src="img/02-inicio-admin.jpg" alt="Panel de inicio del administrador con el selector de días de la semana"><figcaption>Inicio del administrador: el selector de días, los contadores del día y el botón para agregar puntos.</figcaption></figure></li>
+          <figure class="shot"><img src="img/01-login.jpg" alt="Pantalla de inicio de sesión de Rutas Eficientes"><figcaption>Pantalla de ingreso. Debajo del botón está el acceso a «¿Olvidaste tu contraseña?».</figcaption></figure>
+          <figure class="shot"><img src="img/02-inicio-admin.jpg" alt="Panel de inicio del administrador con el selector de días de la semana"><figcaption>Inicio del administrador: el selector de días con su fecha (DD/MM), los contadores del día y el botón para agregar puntos.</figcaption></figure></li>
       <li><span class="step-title">Cargá los puntos de entrega</span>
           Entrá a <strong>Agregar punto</strong>. Escribí la dirección y elegila de la lista que aparece sola mientras tipeás. Si es un cliente al que repartís seguido, guardalo en la agenda con un apodo y la próxima vez lo elegís de la pestaña <strong>Punto guardado</strong>. Cada punto que agregás aparece en el panel de la derecha.
           <div class="shot-grid">
@@ -169,8 +173,9 @@ ol.steps>li:before{content:counter(s);position:absolute;left:0;top:16px;width:34
       <li><span class="step-title">Calculá la ruta y publicala</span>
           Con dos puntos o más se habilita <strong>Calcular ruta óptima</strong>. El sistema reordena las paradas para que el recorrido sea el más corto posible y te muestra el camino en el mapa. Si estás conforme, publicala: desde ese momento el conductor la ve en su teléfono.
           <div class="shot-grid">
-            <figure class="shot"><img src="img/06-historial-rutas.jpg" alt="Historial de rutas con estados Publicada, Completada y En curso"><figcaption>Cada ruta publicada queda en el historial con sus paradas, distancia y estado.</figcaption></figure>
-            <figure class="shot"><img src="img/07-detalle-ruta.jpg" alt="Detalle de una ruta completada con sus dos paradas tildadas"><figcaption>Detalle de una ruta: las paradas tildadas son las que el conductor ya entregó.</figcaption></figure>
+            <figure class="shot"><img src="img/19-ruta-trazada-mapa.jpg" alt="Vista previa de la ruta calculada con el recorrido en el mapa y las paradas reordenadas"><figcaption>La vista previa: distancia, tiempo y el recorrido en el orden óptimo, antes de publicar. Para mover este mapa en la computadora se mantiene presionada la tecla Ctrl.</figcaption></figure>
+            <figure class="shot"><img src="img/06-historial-rutas.jpg" alt="Historial de rutas con la ruta del día en curso y las de días anteriores completadas"><figcaption>Cada ruta publicada queda en el historial con sus paradas, distancia y estado.</figcaption></figure>
+            <figure class="shot"><img src="img/07-detalle-ruta.jpg" alt="Detalle de una ruta completada con sus tres paradas tildadas"><figcaption>Detalle de una ruta: las paradas tildadas son las que el conductor ya entregó.</figcaption></figure>
           </div></li>
     </ol>
 
@@ -227,43 +232,45 @@ ol.steps>li:before{content:counter(s);position:absolute;left:0;top:16px;width:34
         <figure class="shot"><img src="img/05-agenda-lugares.jpg" alt="Agenda de lugares con el alta de punto y la lista de puntos guardados"><figcaption>La agenda de lugares: los puntos guardados se reutilizan en cualquier ruta.</figcaption></figure></div></details>
       <details class="faq-item"><summary><span class="faq-num">7</span>El autocompletado de direcciones tarda o no muestra nada.</summary>
         <div class="faq-answer"><p>Escribí al menos unas letras de la calle y esperá un segundo; aparece el indicador «Buscando…». Si no aparece ninguna sugerencia, revisá la conexión del servidor a internet: la búsqueda la resuelve Google, no el navegador.</p></div></details>
-      <details class="faq-item"><summary><span class="faq-num">8</span>Programé una ruta para un día futuro y al recargar la página desapareció la pestaña.</summary>
-        <div class="faq-answer"><p>La ruta sigue guardada en el servidor: lo que no persiste es la pestaña del día en pantalla. Volvé a elegir esa fecha en el calendario y reaparece con sus puntos.</p></div></details>
+      <details class="faq-item"><summary><span class="faq-num">8</span>Programé una ruta para un día futuro. ¿Se pierde si recargo la página?</summary>
+        <div class="faq-answer"><p>No. Las fechas futuras con ruta guardada se vuelven a mostrar solas en la tira de días al entrar o recargar. Si alguna no aparece, elegila de nuevo desde el ícono <strong>+</strong> del calendario y reaparece con sus puntos.</p></div></details>
       <details class="faq-item"><summary><span class="faq-num">9</span>Publiqué una ruta por error.</summary>
         <div class="faq-answer"><p>Podés despublicarla desde el historial de rutas, y el conductor deja de verla. Si quedaron varias rutas duplicadas del día, existe además la opción de borrar todas las rutas de la fecha actual y empezar de cero.</p></div></details>
+      <details class="faq-item"><summary><span class="faq-num">10</span>El mapa de la vista previa no se mueve cuando lo arrastro.</summary>
+        <div class="faq-answer"><p>Es a propósito, para que no se mueva sin querer mientras recorrés la pantalla. En la computadora mantené presionada la tecla <strong>Ctrl</strong> (<strong>⌘</strong> en Mac) para arrastrarlo o acercarlo con la rueda; en el teléfono movelo con <strong>dos dedos</strong>. Los botones + y − funcionan siempre, y el mapa de pantalla completa se mueve libremente.</p></div></details>
     </div>
 
     <h3 class="faq-group-title">Verificación de entregas</h3>
     <div class="faq-list">
-      <details class="faq-item"><summary><span class="faq-num">10</span>¿Para qué sirve la palabra de verificación?</summary>
+      <details class="faq-item"><summary><span class="faq-num">11</span>¿Para qué sirve la palabra de verificación?</summary>
         <div class="faq-answer"><p>Es la prueba de que la entrega se hizo. Al publicar la ruta, el destinatario recibe por email una palabra al azar; el conductor se la pide al entregar y la ingresa en la aplicación. Sin esa palabra, esa parada no se puede marcar como completada.</p></div></details>
-      <details class="faq-item"><summary><span class="faq-num">11</span>¿Se puede mandar la palabra por WhatsApp o SMS?</summary>
+      <details class="faq-item"><summary><span class="faq-num">12</span>¿Se puede mandar la palabra por WhatsApp o SMS?</summary>
         <div class="faq-answer"><p>No. Solo por email. Los otros canales requieren contratar un proveedor externo pago.</p></div></details>
-      <details class="faq-item"><summary><span class="faq-num">12</span>El destinatario no recibió el email.</summary>
+      <details class="faq-item"><summary><span class="faq-num">13</span>El destinatario no recibió el email.</summary>
         <div class="faq-answer"><p>Revisá la carpeta de correo no deseado y que el email cargado en el punto esté bien escrito. Si nadie recibe los correos, el problema está en la configuración del servidor de salida.</p></div></details>
-      <details class="faq-item"><summary><span class="faq-num">13</span>El conductor ingresa la palabra y el sistema la rechaza.</summary>
+      <details class="faq-item"><summary><span class="faq-num">14</span>El conductor ingresa la palabra y el sistema la rechaza.</summary>
         <div class="faq-answer"><p>La palabra es la del último envío: si la ruta se volvió a publicar, la anterior dejó de valer y hay que usar la nueva. Cada intento fallido queda registrado.</p></div></details>
     </div>
 
     <h3 class="faq-group-title">En la calle</h3>
     <div class="faq-list">
-      <details class="faq-item"><summary><span class="faq-num">14</span>El mapa no sigue mi posición.</summary>
+      <details class="faq-item"><summary><span class="faq-num">15</span>El mapa no sigue mi posición.</summary>
         <div class="faq-answer"><p>El seguimiento necesita el GPS encendido y el permiso de ubicación otorgado al navegador. Si lo rechazaste la primera vez, hay que habilitarlo en la configuración del sitio.</p></div></details>
-      <details class="faq-item"><summary><span class="faq-num">15</span>¿Tiene navegación con voz, como un GPS?</summary>
+      <details class="faq-item"><summary><span class="faq-num">16</span>¿Tiene navegación con voz, como un GPS?</summary>
         <div class="faq-answer"><p>Sí, pero se apoya en Google Maps: el botón de pantalla completa abre la navegación paso a paso allí. No existe un servicio de navegación con voz gratuito que pueda funcionar dentro de una página web.</p></div></details>
-      <details class="faq-item"><summary><span class="faq-num">16</span>¿Funciona sin señal?</summary>
+      <details class="faq-item"><summary><span class="faq-num">17</span>¿Funciona sin señal?</summary>
         <div class="faq-answer"><p>Parcialmente, y solo si el sistema está publicado con conexión segura (HTTPS): en ese caso el mapa del día queda precargado y se ve sin datos. Sobre una dirección sin HTTPS el navegador no lo permite. Marcar paradas siempre requiere conexión.</p></div></details>
-      <details class="faq-item"><summary><span class="faq-num">17</span>Se me cortó una calle y no puedo llegar a la próxima parada.</summary>
+      <details class="faq-item"><summary><span class="faq-num">18</span>Se me cortó una calle y no puedo llegar a la próxima parada.</summary>
         <div class="faq-answer"><p>Reportá un imprevisto indicando el tipo y el detalle. El administrador lo recibe en el momento, con aviso sonoro, y puede rearmar la ruta si hace falta.</p></div></details>
     </div>
 
     <h3 class="faq-group-title">General</h3>
     <div class="faq-list">
-      <details class="faq-item"><summary><span class="faq-num">18</span>¿Se puede usar para dos empresas distintas?</summary>
+      <details class="faq-item"><summary><span class="faq-num">19</span>¿Se puede usar para dos empresas distintas?</summary>
         <div class="faq-answer"><p>No. Cada instalación atiende a una sola empresa. Separar los datos de varias empresas requeriría un cambio de fondo en el sistema.</p></div></details>
-      <details class="faq-item"><summary><span class="faq-num">19</span>¿Hay que instalar algo en el teléfono del conductor?</summary>
-        <div class="faq-answer"><p>No. Se abre desde el navegador. Conviene guardar la dirección como acceso directo en la pantalla de inicio.</p></div></details>
-      <details class="faq-item"><summary><span class="faq-num">20</span>¿Los datos de los clientes están seguros?</summary>
+      <details class="faq-item"><summary><span class="faq-num">20</span>¿Hay que instalar algo en el teléfono del conductor?</summary>
+        <div class="faq-answer"><p>No hace falta: se abre desde el navegador. Si se prefiere tenerla como aplicación, al entrar aparece el aviso «Instalar Rutas Eficientes»; en iPhone se agrega con <strong>Compartir</strong> y <strong>Agregar a inicio</strong>.</p></div></details>
+      <details class="faq-item"><summary><span class="faq-num">21</span>¿Los datos de los clientes están seguros?</summary>
         <div class="faq-answer"><p>Las contraseñas se guardan cifradas y nunca en texto plano, y las claves de los servicios externos viven solo en el servidor: el navegador nunca las ve.</p></div></details>
     </div>
 
@@ -271,9 +278,9 @@ ol.steps>li:before{content:counter(s);position:absolute;left:0;top:16px;width:34
 </section>
 
 <footer class="doc-footer">
-  Aprilon · Rutas Eficientes — Guía de inicio rápido y Preguntas frecuentes, versión 1.0.
+  Rutas Eficientes · Guía de inicio rápido y Preguntas frecuentes, versión 1.1.
 </footer>
 
-</div>
+</main>
 </body>
 </html>

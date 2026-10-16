@@ -1,285 +1,277 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="light">
+<html lang="es-AR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Rutas Eficientes — Aprilon</title>
-<meta name="description" content="Rutas Eficientes, el sistema de reparto desarrollado para Aprilon: cargá las entregas del día, el sistema calcula el recorrido más corto y el repartidor lo sigue desde el teléfono.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rutas Eficientes · Las entregas del día en el orden que conviene</title>
+<meta name="description" content="Rutas Eficientes ordena las paradas de reparto en el recorrido más corto con tráfico real, las manda al teléfono del repartidor y deja constancia de cada entrega.">
+<link rel="canonical" href="https://nayitoo.github.io/rutas-eficientes-documentacion/landing/">
+<meta name="theme-color" content="#0C3A2E">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_AR">
+<meta property="og:title" content="Rutas Eficientes">
+<meta property="og:description" content="Cargá las paradas del día. El sistema calcula el orden más corto, lo manda al teléfono del repartidor y registra cada entrega.">
+<meta property="og:url" content="https://nayitoo.github.io/rutas-eficientes-documentacion/landing/">
+<meta property="og:image" content="https://nayitoo.github.io/rutas-eficientes-documentacion/landing/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="favicon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --brand:#2f7d54; --brand-2:#3fa06b; --brand-soft:#e8f3ec;
-    --ink:#141815; --muted:#5c635e; --line:#dde3de; --bg:#eaefe9; --card:#f6f9f4; --on-brand:#f2f7f3;
-    --ease:cubic-bezier(.22,.61,.36,1);
-    color-scheme: light;
-  }
-  html{scroll-behavior:smooth}
-  @media (prefers-color-scheme:dark){
-    :root:not([data-theme="light"]){
-      --ink:#eef2ef; --muted:#a3ada7; --line:#2a2f2c; --bg:#12140f; --card:#191c18; --brand-soft:#1b2a21; --on-brand:#f2f7f3;
-    }
-  }
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 Manrope,"Segoe UI",system-ui,sans-serif}
-  .wrap{max-width:1060px;margin:0 auto;padding-inline:20px}
-  a{color:var(--brand)}
-  nav{position:sticky;top:0;z-index:9;background:color-mix(in srgb,var(--bg) 88%,transparent);
-      backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-  nav .wrap{display:flex;align-items:center;gap:20px;padding-block:14px;flex-wrap:wrap}
-  .logo{font-weight:800;font-size:19px;display:flex;align-items:center;gap:9px}
-  .dot{width:11px;height:11px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 4px var(--brand-soft)}
-  .logo .mark{height:30px;width:auto;border-radius:7px;display:block}
-  .hero-mark{height:96px;width:auto;border-radius:14px;margin-bottom:22px;display:block}
-  nav a.link{margin-left:auto;text-decoration:none;color:var(--muted);font-size:14.5px}
-  nav a.link+a.link{margin-left:0}
-  .btn{display:inline-block;background:var(--brand);color:var(--on-brand);text-decoration:none;font-weight:700;
-       padding:12px 22px;border-radius:10px;border:1px solid var(--brand)}
-  .btn.ghost{background:transparent;color:var(--brand)}
-  header.hero{padding-block:72px 60px;border-bottom:1px solid var(--line)}
-  h1{font-size:clamp(32px,5.4vw,52px);line-height:1.08;margin:0 0 16px;letter-spacing:-.02em}
-  h1 span{color:var(--brand)}
-  .lead{font-size:clamp(17px,2.2vw,20px);color:var(--muted);max-width:62ch;margin:0 0 28px}
-  .cta{display:flex;gap:12px;flex-wrap:wrap}
-  .pill{display:inline-block;background:var(--brand-soft);color:var(--brand);font-weight:700;font-size:12.5px;
-        letter-spacing:.1em;text-transform:uppercase;padding:6px 13px;border-radius:999px;margin-bottom:18px}
-  section{padding-block:64px;border-bottom:1px solid var(--line)}
-  h2{font-size:clamp(24px,3.4vw,32px);margin:0 0 10px;letter-spacing:-.01em}
-  .sub{color:var(--muted);max-width:62ch;margin:0 0 32px}
-  .grid{display:grid;gap:18px}
-  .g3{grid-template-columns:repeat(3,1fr)}
-  .g4{grid-template-columns:repeat(4,1fr)}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}
-  .card h3{margin:0 0 6px;font-size:17.5px}
-  .card p{margin:0;color:var(--muted);font-size:15px}
-  .ico{width:38px;height:38px;border-radius:10px;background:var(--brand-soft);color:var(--brand);
-       display:grid;place-items:center;font-weight:800;margin-bottom:12px}
-  ol.flow{list-style:none;counter-reset:f;padding:0;margin:0;display:grid;gap:14px;grid-template-columns:repeat(4,1fr)}
-  ol.flow li{counter-increment:f;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
-  ol.flow li:before{content:counter(f);display:grid;place-items:center;width:30px;height:30px;border-radius:50%;
-    background:var(--brand);color:var(--on-brand);font-weight:800;margin-bottom:10px}
-  ol.flow b{display:block;margin-bottom:4px}
-  ol.flow span{color:var(--muted);font-size:14.5px}
-  .team{display:grid;gap:16px;grid-template-columns:repeat(5,1fr)}
-  .member{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;text-align:center}
-  .avatar{width:72px;height:72px;border-radius:50%;background:var(--brand-soft);
-          object-fit:cover;display:block;margin:0 auto 12px}
-  .member b{display:block;font-size:15px}
-  .member span{color:var(--muted);font-size:13.5px}
-  .stack{display:flex;flex-wrap:wrap;gap:9px;margin-top:6px}
-  .stack span{border:1px solid var(--line);border-radius:999px;padding:5px 13px;font-size:13.5px;color:var(--muted)}
-  footer{padding-block:36px;color:var(--muted);font-size:14px}
-  .todo{outline:2px dashed var(--brand);outline-offset:3px}
-
-  /* ---------- Preguntas frecuentes (acordeón nativo, sin JavaScript) ---------- */
-  .faq-group{margin-bottom:30px}
-  .faq-group>h3{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
-                margin:0 0 12px;font-weight:800}
-  .faq{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:9px;
-       transition:border-color .25s var(--ease),background .25s var(--ease)}
-  .faq[open]{border-color:var(--brand)}
-  .faq:hover{border-color:var(--brand)}
-  .faq>summary{list-style:none;cursor:pointer;padding:15px 18px;font-weight:700;font-size:15.5px;
-               display:flex;align-items:flex-start;gap:12px}
-  .faq>summary::-webkit-details-marker{display:none}
-  .faq>summary:before{content:"";flex:none;width:9px;height:9px;margin-top:7px;border-right:2px solid var(--brand);
-                      border-bottom:2px solid var(--brand);transform:rotate(-45deg);
-                      transition:transform .3s var(--ease)}
-  .faq[open]>summary:before{transform:rotate(45deg)}
-  .faq>summary:focus-visible{outline:2px solid var(--brand);outline-offset:2px;border-radius:12px}
-  .faq .ans{display:grid;grid-template-rows:0fr;transition:grid-template-rows .32s var(--ease)}
-  .faq[open] .ans{grid-template-rows:1fr}
-  .faq .ans>p{overflow:hidden;margin:0;color:var(--muted);font-size:15px;padding:0 18px 0 39px}
-  .faq[open] .ans>p{padding-bottom:16px}
-
-  /* ---------- Animaciones de entrada: aparición sobria al hacer scroll ---------- */
-  .reveal{opacity:0;transform:translateY(16px);
-          transition:opacity .6s var(--ease),transform .6s var(--ease)}
-  .reveal.in{opacity:1;transform:none}
-  .card,ol.flow li,.member{transition:transform .28s var(--ease),border-color .28s var(--ease)}
-  .card:hover,ol.flow li:hover,.member:hover{transform:translateY(-3px);border-color:var(--brand)}
-  .btn{transition:transform .2s var(--ease),filter .2s var(--ease)}
-  .btn:hover{transform:translateY(-2px);filter:brightness(1.06)}
-  @media (prefers-reduced-motion:reduce){
-    .reveal{opacity:1;transform:none;transition:none}
-    .faq .ans{transition:none}
-    .card:hover,ol.flow li:hover,.member:hover,.btn:hover{transform:none}
-    *{scroll-behavior:auto!important}
-  }
-  @media (max-width:900px){ .g3,.g4,ol.flow,.team{grid-template-columns:repeat(2,1fr)} }
-  @media (max-width:560px){ .g3,.g4,ol.flow,.team{grid-template-columns:1fr} section{padding-block:48px} }
-</style>
+<link rel="preload" href="fonts/overpass-100_900-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/landing.css">
+<script>document.documentElement.classList.add('js');if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('motion');</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Rutas Eficientes","applicationCategory":"BusinessApplication","operatingSystem":"Web","inLanguage":"es-AR","url":"https://nayitoo.github.io/rutas-eficientes-documentacion/landing/","description":"Aplicación web que ordena las paradas de reparto en el recorrido más corto, las publica en el teléfono del repartidor y registra cada entrega con una palabra de verificación.","offers":{"@type":"Offer","price":"0","priceCurrency":"ARS"}}
+</script>
 </head>
 <body>
+<a class="skip-link" href="#main">Saltar al contenido</a>
 
-<nav><div class="wrap">
-  <div class="logo"><img class="mark" src="logo.png" alt="Rutas Eficientes" width="517" height="384">Rutas Eficientes</div>
-  <a class="link" href="#producto">Producto</a>
-  <a class="link" href="#como">Cómo funciona</a>
-  <a class="link" href="#proyecto">El proyecto</a>
-  <a class="link" href="#faq">Preguntas</a>
-  <a class="link" href="#equipo">Equipo</a>
-</div></nav>
+<header class="frame" id="top">
+  <a class="frame__brand" href="#main" aria-label="Rutas Eficientes, inicio de la página">
+    <img src="logo.png" alt="" width="517" height="384">
+    <span>Rutas <b>Eficientes</b></span>
+  </a>
+  <nav class="frame__nav" aria-label="Secciones">
+    <a class="draw" href="#como">Cómo funciona</a>
+    <a class="draw" href="#que-hace">Qué hace</a>
+    <a class="draw" href="#equipo">Equipo</a>
+    <a class="draw" href="../">Documentación</a>
+  </nav>
+  <a class="btn btn--sm" href="https://rutas-eficientes.alwaysdata.net/" data-fill><span class="btn__fill" aria-hidden="true"></span><span class="btn__label">Abrir el sistema</span><span class="arrow" aria-hidden="true">↗</span></a>
+  <button class="frame__menu" type="button" aria-expanded="false" aria-controls="menu">Menú</button>
+</header>
 
-<header class="hero"><div class="wrap">
-  <img class="hero-mark" src="logo.png" alt="" width="517" height="384">
-  <span class="pill">Rutas Eficientes</span>
-  <h1>Las entregas del día,<br>en el <span>recorrido más corto</span>.</h1>
-  <p class="lead">Rutas Eficientes toma las direcciones que cargás, calcula el orden óptimo de las paradas considerando el tráfico real, y se la entrega al repartidor en el teléfono. Sin planillas, sin recorridos armados de memoria.</p>
-  <div class="cta">
-    <a class="btn" href="#como">Ver cómo funciona</a>
-    <a class="btn ghost" href="#proyecto">Sobre el proyecto</a>
+<div class="menu" id="menu" hidden>
+  <nav aria-label="Menú">
+    <a href="#como">Cómo funciona</a>
+    <a href="#que-hace">Qué hace</a>
+    <a href="#en-la-calle">En la calle</a>
+    <a href="#preguntas">Preguntas</a>
+    <a href="#equipo">Equipo</a>
+    <a href="../">Documentación</a>
+    <a href="https://rutas-eficientes.alwaysdata.net/">Abrir el sistema ↗</a>
+  </nav>
+</div>
+
+<main id="main" tabindex="-1">
+
+  <!-- 1 · Escena: la ruta real de la demo, del orden de carga al orden óptimo -->
+  <section class="hero" aria-labelledby="hero-titulo">
+    <div class="hero__stage">
+      <div class="hero__text">
+        <h1 id="hero-titulo" class="hero__title" data-split="lines" data-intro>Vos cargás las paradas. El orden lo calcula el sistema.</h1>
+        <p class="hero__lead">Rutas Eficientes busca el recorrido más corto entre las entregas del día, con el tráfico del momento, y se lo manda al repartidor al teléfono. Cada parada se cierra con hora y constancia.</p>
+        <div class="hero__cta" data-reveal="up" data-intro data-delay="0.25">
+          <a class="btn" href="#como" data-fill><span class="btn__fill" aria-hidden="true"></span><span class="btn__label">Ver cómo funciona</span><span class="arrow arrow--down" aria-hidden="true">↓</span></a>
+          <a class="link" href="https://rutas-eficientes.alwaysdata.net/">Abrir el sistema</a>
+        </div>
+      </div>
+
+      <figure class="ruta" aria-labelledby="ruta-pie">
+        <div class="ruta__mapa" data-ruta>
+          <svg class="ruta__svg" viewBox="0 0 1000 760" aria-hidden="true" focusable="false">
+            <path class="ruta__fantasma" d=""/>
+            <path class="ruta__carga" d=""/>
+            <path class="ruta__sombra" d=""/>
+            <path class="ruta__optima" d=""/>
+            <path class="ruta__estela" d=""/>
+            <circle class="ruta__vehiculo" r="11" cx="-50" cy="-50"/>
+          </svg>
+          <ol class="ruta__pines" aria-hidden="true"></ol>
+        </div>
+        <div class="ruta__estado" aria-live="polite">
+          <span class="ruta__modo" data-modo>Orden óptimo</span>
+          <span class="ruta__dato"><b data-num="paradas">5</b> paradas</span>
+          <span class="ruta__dato ruta__dato--fin"><b data-num="km">22,7</b> km</span>
+          <span class="ruta__dato ruta__dato--fin"><b data-num="tiempo">1 h 44 min</b></span>
+        </div>
+        <figcaption id="ruta-pie" class="ruta__pie">Una ruta real de demostración en Buenos Aires: cinco paradas cargadas en un orden y reordenadas por el sistema con Google Routes. Telas Palermo y Lencería Boedo intercambian su lugar.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 2 · Declaración -->
+  <section class="statement" aria-label="El problema">
+    <p class="statement__big" data-split="lines">Cuando el recorrido se arma de memoria, nadie sabe en qué orden se visitó cada parada, a qué hora, ni si había un camino más corto.</p>
+    <p class="statement__small" data-reveal="up">Rutas Eficientes lo convierte en un registro: un orden calculado, un horario por parada y una constancia de cada entrega, visibles para quien coordina mientras el reparto ocurre.</p>
+  </section>
+
+  <!-- 3 · Narrativa: cuatro pasos con la captura real de cada uno -->
+  <section class="como" id="como" aria-labelledby="como-titulo">
+    <h2 id="como-titulo" class="seccion__titulo" data-split="lines">Cómo funciona</h2>
+    <div class="como__grid">
+      <div class="como__stage" data-stage>
+        <div class="pantalla">
+          <img class="is-on" src="img/app/cargar.webp" alt="Pantalla Agregar punto con la dirección Av. Boedo 870 y el email de verificación completos" width="1600" height="900" loading="eager" decoding="async">
+          <img src="img/app/calcular.webp" alt="Vista previa de la ruta calculada: 22,7 km, 1 h 44 min y cinco paradas sobre el mapa" width="1600" height="900" loading="eager" decoding="async">
+          <img src="img/app/publicar.webp" alt="Inicio de administración con la ruta del viernes publicada y sus paradas en orden" width="1600" height="900" loading="eager" decoding="async">
+          <img src="img/app/verificar.webp" alt="Ventana de verificación de entrega donde el repartidor ingresa la palabra recibida por el encargado" width="1600" height="900" loading="eager" decoding="async">
+        </div>
+      </div>
+      <ol class="como__pasos">
+        <li class="paso" data-chapter="0">
+          <span class="pin" aria-hidden="true"><span>1</span></span>
+          <h3>Cargar</h3>
+          <p>Las direcciones se escriben con autocompletado o se eligen de la agenda de clientes. El primer punto es el origen de la ruta. Si la parada tiene email, se lo carga para verificar la entrega.</p>
+          <img class="paso__mini" src="img/app/cargar.webp" alt="" width="1600" height="900" loading="lazy" decoding="async">
+        </li>
+        <li class="paso" data-chapter="1">
+          <span class="pin" aria-hidden="true"><span>2</span></span>
+          <h3>Calcular</h3>
+          <p>Con dos puntos o más, el sistema consulta Google Routes y devuelve el orden óptimo de las paradas, con el tráfico del momento. Antes de publicar se revisa la vista previa en el mapa.</p>
+          <img class="paso__mini" src="img/app/calcular.webp" alt="" width="1600" height="900" loading="lazy" decoding="async">
+        </li>
+        <li class="paso" data-chapter="2">
+          <span class="pin" aria-hidden="true"><span>3</span></span>
+          <h3>Publicar</h3>
+          <p>La ruta aparece en el teléfono del repartidor. Cada destinatario con email recibe una palabra al azar, que es la constancia de su entrega.</p>
+          <img class="paso__mini" src="img/app/publicar.webp" alt="" width="1600" height="900" loading="lazy" decoding="async">
+        </li>
+        <li class="paso" data-chapter="3">
+          <span class="pin" aria-hidden="true"><span>4</span></span>
+          <h3>Entregar</h3>
+          <p>El repartidor sigue el mapa, pide la palabra al entregar y cierra la parada. Queda registrada la hora de cada entrega y quien coordina ve el avance en vivo.</p>
+          <img class="paso__mini" src="img/app/verificar.webp" alt="" width="1600" height="900" loading="lazy" decoding="async">
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 4 · Índice de funciones con vista previa -->
+  <section class="indice" id="que-hace" aria-labelledby="indice-titulo">
+    <h2 id="indice-titulo" class="seccion__titulo" data-split="lines">Qué hace</h2>
+    <ul class="indice__lista">
+      <li class="fila" data-preview="img/app/calcular.webp">
+        <h3 class="fila__titulo"><span class="fila__pin" aria-hidden="true"></span><span class="fila__nombre">Recorrido óptimo</span></h3>
+        <p class="fila__texto">Reordena las paradas para acortar el recorrido total, con el tráfico en tiempo real.</p>
+        <span class="fila__rol">Administración</span>
+        <img class="fila__thumb" src="img/app/calcular.webp" alt="" width="1600" height="900" loading="lazy" decoding="async">
+      </li>
+      <li class="fila" data-preview="img/app/verificar.webp">
+        <h3 class="fila__titulo"><span class="fila__pin" aria-hidden="true"></span><span class="fila__nombre">Entrega verificada</span></h3>
+        <p class="fila__texto">Sin la palabra que recibió el destinatario por email, la parada no se puede cerrar.</p>
+        <span class="fila__rol">Repartidor</span>
+        <img class="fila__thumb" src="img/app/verificar.webp" alt="" width="1600" height="900" loading="lazy" decoding="async">
+      </li>
+      <li class="fila" data-preview="img/app/imprevistos.webp">
+        <h3 class="fila__titulo"><span class="fila__pin" aria-hidden="true"></span><span class="fila__nombre">Imprevistos al instante</span></h3>
+        <p class="fila__texto">Una calle cortada o un cliente ausente llegan al panel de quien coordina en el momento, con aviso sonoro.</p>
+        <span class="fila__rol">Repartidor y administración</span>
+        <img class="fila__thumb" src="img/app/imprevistos.webp" alt="" width="1600" height="900" loading="lazy" decoding="async">
+      </li>
+      <li class="fila" data-preview="img/app/agenda.webp">
+        <h3 class="fila__titulo"><span class="fila__pin" aria-hidden="true"></span><span class="fila__nombre">Agenda de clientes</span></h3>
+        <p class="fila__texto">Las direcciones frecuentes se guardan con un apodo y se suman a cualquier ruta en dos clics.</p>
+        <span class="fila__rol">Administración</span>
+        <img class="fila__thumb" src="img/app/agenda.webp" alt="" width="1600" height="900" loading="lazy" decoding="async">
+      </li>
+      <li class="fila" data-preview="img/app/inicio.webp">
+        <h3 class="fila__titulo"><span class="fila__pin" aria-hidden="true"></span><span class="fila__nombre">La semana a la vista</span></h3>
+        <p class="fila__texto">Cada día muestra su fecha y marca si ya tiene ruta; con el ícono + se programan días futuros.</p>
+        <span class="fila__rol">Administración</span>
+        <img class="fila__thumb" src="img/app/inicio.webp" alt="" width="1600" height="900" loading="lazy" decoding="async">
+      </li>
+      <li class="fila" data-preview="img/app/historial.webp">
+        <h3 class="fila__titulo"><span class="fila__pin" aria-hidden="true"></span><span class="fila__nombre">Historial de rutas</span></h3>
+        <p class="fila__texto">Las rutas de cualquier fecha, con sus paradas, la distancia, la duración y el estado.</p>
+        <span class="fila__rol">Administración y jefatura</span>
+        <img class="fila__thumb" src="img/app/historial.webp" alt="" width="1600" height="900" loading="lazy" decoding="async">
+      </li>
+    </ul>
+    <div class="preview" aria-hidden="true"><img alt="" src="img/app/calcular.webp" width="1600" height="900"></div>
+  </section>
+
+  <!-- 5 · En la calle: el teléfono del repartidor -->
+  <section class="calle" id="en-la-calle" aria-labelledby="calle-titulo">
+    <div class="calle__telefonos">
+      <figure class="tel tel--a" data-reveal="up"><img src="img/app/tel-inicio.webp" alt="Inicio del repartidor en el teléfono: cinco paradas, 1 h 44 min, 22,7 km y la próxima parada" width="600" height="1298" loading="lazy" decoding="async"><figcaption>La próxima parada, siempre arriba.</figcaption></figure>
+      <figure class="tel tel--b" data-reveal="up" data-delay="0.12"><img src="img/app/tel-mapa.webp" alt="Mapa del recorrido del día en el teléfono, con las paradas numeradas" width="600" height="1298" loading="lazy" decoding="async"><figcaption>El recorrido trazado por calle.</figcaption></figure>
+      <figure class="tel tel--c" data-reveal="up" data-delay="0.24"><img src="img/app/tel-imprevisto.webp" alt="Formulario para reportar un imprevisto en el teléfono, con el tipo Cliente ausente elegido" width="600" height="1298" loading="lazy" decoding="async"><figcaption>Un imprevisto, en dos toques.</figcaption></figure>
+    </div>
+    <div class="calle__texto">
+      <h2 id="calle-titulo" class="seccion__titulo" data-split="lines">En la calle</h2>
+      <p data-reveal="up">El repartidor no instala nada: abre el sistema en el navegador del teléfono, o lo agrega como aplicación desde el aviso de instalación. Ve la próxima parada con su tiempo estimado, el recorrido sobre el mapa y su posición por GPS.</p>
+      <p data-reveal="up">La navegación con voz se abre en Google Maps con las paradas ya cargadas, y los mapas de la pantalla no se mueven sin querer: se desplazan con dos dedos.</p>
+    </div>
+  </section>
+
+  <!-- 6 · Datos -->
+  <section class="datos" aria-labelledby="datos-titulo">
+    <h2 id="datos-titulo" class="sr-only">El sistema en números</h2>
+    <dl class="datos__lista">
+      <div class="dato"><dt><span data-count="31">31</span></dt><dd>endpoints en PHP 8, sin framework</dd></div>
+      <div class="dato"><dt><span data-count="7">7</span></dt><dd>tablas en tercera forma normal</dd></div>
+      <div class="dato"><dt><span data-count="3">3</span></dt><dd>roles: jefatura, administración y repartidor</dd></div>
+      <div class="dato"><dt><span data-count="1">1</span></dt><dd>sola página web, instalable como app</dd></div>
+    </dl>
+    <p class="datos__stack">Hecho con PHP 8 y MySQL, mapas de Leaflet sobre OpenStreetMap, y Google Routes y Places del lado del servidor: la clave de Google nunca llega al navegador.</p>
+  </section>
+
+  <!-- 7 · Preguntas frecuentes -->
+  <section class="faq" id="preguntas" aria-labelledby="faq-titulo">
+    <h2 id="faq-titulo" class="seccion__titulo" data-split="lines">Preguntas</h2>
+    <div class="faq__cuerpo">
+      <h3 class="faq__grupo">Armado de rutas</h3>
+      <details class="q"><summary>Cargué las paradas en un orden y el sistema las cambió. ¿Es un error?</summary><div class="q__a"><p>No, es la función principal: el sistema reordena las paradas para que el recorrido total sea el más corto posible, considerando el tráfico del momento.</p></div></details>
+      <details class="q"><summary>El botón «Calcular ruta óptima» está gris.</summary><div class="q__a"><p>Hacen falta al menos dos puntos cargados. Con uno solo no hay recorrido que optimizar; al agregar el segundo, el botón se habilita solo.</p></div></details>
+      <details class="q"><summary>¿Cuál es la diferencia entre «Dirección nueva» y «Punto guardado»?</summary><div class="q__a"><p>Una dirección nueva se usa solo en la ruta que estás armando. Un punto guardado es un cliente frecuente con un apodo, que se reutiliza cuando quieras.</p></div></details>
+      <details class="q"><summary>El mapa de la vista previa no se mueve cuando lo arrastro.</summary><div class="q__a"><p>Es a propósito, para que no se mueva sin querer. En la computadora se mantiene presionada la tecla Ctrl para arrastrarlo o acercarlo con la rueda; en el teléfono se mueve con dos dedos.</p></div></details>
+      <details class="q"><summary>Programé una ruta para un día futuro. ¿Se pierde si recargo la página?</summary><div class="q__a"><p>No. Las fechas futuras con ruta guardada vuelven a aparecer solas en la tira de días.</p></div></details>
+
+      <h3 class="faq__grupo">Verificación de entregas</h3>
+      <details class="q"><summary>¿Para qué sirve la palabra de verificación?</summary><div class="q__a"><p>Es la prueba de que la entrega se hizo. Al publicar la ruta, el destinatario recibe por email una palabra al azar; el repartidor se la pide al entregar y sin ella la parada no se puede cerrar.</p></div></details>
+      <details class="q"><summary>¿Se puede mandar la palabra por WhatsApp o SMS?</summary><div class="q__a"><p>No, solo por email. Los otros canales requieren contratar un proveedor externo pago.</p></div></details>
+
+      <h3 class="faq__grupo">En la calle</h3>
+      <details class="q"><summary>¿Hay que instalar algo en el teléfono del repartidor?</summary><div class="q__a"><p>No hace falta: se abre desde el navegador. Si se prefiere tenerlo como aplicación, al entrar aparece el aviso «Instalar Rutas Eficientes»; en iPhone se agrega con Compartir y Agregar a inicio.</p></div></details>
+      <details class="q"><summary>¿Tiene navegación con voz?</summary><div class="q__a"><p>Sí, a través de Google Maps: el botón de navegación abre el recorrido paso a paso allí. No existe un servicio de navegación con voz gratuito que funcione dentro de una página web.</p></div></details>
+      <details class="q"><summary>Se cortó una calle y no puedo llegar a la próxima parada.</summary><div class="q__a"><p>Reportá un imprevisto con el tipo y el detalle. Quien coordina lo recibe en el momento, con aviso sonoro, y puede rearmar la ruta si hace falta.</p></div></details>
+
+      <h3 class="faq__grupo">General</h3>
+      <details class="q"><summary>¿Los datos están seguros?</summary><div class="q__a"><p>Las contraseñas se guardan cifradas, nunca en texto plano, y las claves de los servicios externos viven solo en el servidor.</p></div></details>
+      <details class="q"><summary>¿Se puede usar para dos empresas distintas?</summary><div class="q__a"><p>No. Cada instalación atiende a una sola empresa; separar los datos de varias requeriría un cambio de fondo en el sistema.</p></div></details>
+      <p class="faq__mas">Todas las respuestas están en la <a class="link" href="../quickstart/#s12">guía de inicio rápido</a> y en el <a class="link" href="../manual/">manual de usuario</a>.</p>
+    </div>
+  </section>
+
+  <!-- 8 · Equipo -->
+  <section class="equipo" id="equipo" aria-labelledby="equipo-titulo">
+    <h2 id="equipo-titulo" class="seccion__titulo" data-split="lines">Equipo</h2>
+    <p class="equipo__sub" data-reveal="up">Proyecto final de la Tecnicatura en Informática, 7.º Informática B, Instituto San Leonardo Murialdo.</p>
+    <ul class="equipo__lista">
+      <li class="persona" data-reveal="up"><img src="img/equipo/bravo-cejas.jpg" alt="Santiago Bravo Cejas" width="192" height="192" loading="lazy" decoding="async"><b>Santiago Bravo Cejas</b><span>Project manager y desarrollo backend</span></li>
+      <li class="persona" data-reveal="up" data-delay="0.06"><img src="img/equipo/abraham.jpg" alt="Matías Abraham" width="192" height="192" loading="lazy" decoding="async"><b>Matías Abraham</b><span>Administración de base de datos</span></li>
+      <li class="persona" data-reveal="up" data-delay="0.12"><img src="img/equipo/cerredo.jpg" alt="Ignacio Cerredo" width="192" height="192" loading="lazy" decoding="async"><b>Ignacio Cerredo</b><span>Desarrollo frontend y backend</span></li>
+      <li class="persona" data-reveal="up" data-delay="0.18"><img src="img/equipo/dutra.jpg" alt="Joaquin Dutra" width="192" height="192" loading="lazy" decoding="async"><b>Joaquin Dutra</b><span>Diseño UX/UI y desarrollo frontend</span></li>
+      <li class="persona" data-reveal="up" data-delay="0.24"><img src="img/equipo/mascioli.jpg" alt="Franco Mascioli" width="192" height="192" loading="lazy" decoding="async"><b>Franco Mascioli</b><span>Infraestructura y despliegue</span></li>
+    </ul>
+  </section>
+</main>
+
+<!-- 9 · Pie final -->
+<footer class="pie">
+  <div class="pie__llegada" aria-hidden="true"><span class="pin pin--fin"><span>✓</span></span></div>
+  <p class="pie__nombre" aria-hidden="true">Rutas Eficientes</p>
+  <nav class="pie__links" aria-label="Documentación y sistema">
+    <a class="pie__link" href="https://rutas-eficientes.alwaysdata.net/"><span>Abrir el sistema</span><span class="arrow" aria-hidden="true">↗</span></a>
+    <a class="pie__link" href="../quickstart/"><span>Guía de inicio rápido</span><span class="arrow" aria-hidden="true">→</span></a>
+    <a class="pie__link" href="../manual/"><span>Manual de usuario</span><span class="arrow" aria-hidden="true">→</span></a>
+    <a class="pie__link" href="../documentacion/"><span>Documentación técnica</span><span class="arrow" aria-hidden="true">→</span></a>
+  </nav>
+  <div class="pie__legal">
+    <p>Rutas Eficientes, 2026. Proyecto final de 7.º Informática B, Instituto San Leonardo Murialdo.</p>
+    <p>Tipografía Overpass. La ruta de la portada es real: la calculó el sistema con Google Routes.</p>
+    <a href="#top" class="pie__arriba">Volver arriba</a>
   </div>
-</div></header>
+</footer>
 
-<section id="producto"><div class="wrap">
-  <h2>Qué resuelve</h2>
-  <p class="sub">Una empresa textil que reparte todos los días pierde tiempo y combustible cuando el recorrido se arma a ojo. Rutas Eficientes convierte eso en un proceso repetible.</p>
-  <div class="grid g3">
-    <div class="card"><div class="ico">→</div><h3>Recorrido óptimo</h3><p>El sistema reordena las paradas para minimizar el trayecto total, con el tráfico del momento incluido en el cálculo.</p></div>
-    <div class="card"><div class="ico">◎</div><h3>Seguimiento en vivo</h3><p>El repartidor ve la ruta sobre el mapa y su propia posición por GPS, y marca cada parada a medida que entrega.</p></div>
-    <div class="card"><div class="ico">✓</div><h3>Entrega verificada</h3><p>El destinatario recibe una palabra por email. Sin esa palabra, la parada no se puede cerrar: queda constancia de la entrega.</p></div>
-    <div class="card"><div class="ico">⚑</div><h3>Imprevistos al instante</h3><p>Una calle cortada o un cliente ausente llegan al panel de quien coordina, con aviso, en el momento.</p></div>
-    <div class="card"><div class="ico">☰</div><h3>Agenda de clientes</h3><p>Las direcciones frecuentes se guardan con un apodo y se reutilizan con un clic en la ruta siguiente.</p></div>
-    <div class="card"><div class="ico">⏱</div><h3>Historial y planificación</h3><p>Rutas de días anteriores consultables, y rutas programadas para fechas futuras.</p></div>
-  </div>
-</div></section>
-
-<section id="como"><div class="wrap">
-  <h2>Cómo funciona</h2>
-  <p class="sub">Cuatro pasos, de la dirección al comprobante de entrega.</p>
-  <ol class="flow">
-    <li><b>Cargar</b><span>El administrador escribe las direcciones del día con autocompletado, o las toma de la agenda.</span></li>
-    <li><b>Calcular</b><span>El sistema resuelve el orden más eficiente de las paradas y dibuja el recorrido en el mapa.</span></li>
-    <li><b>Publicar</b><span>La ruta queda disponible en el teléfono del repartidor, y salen los emails de verificación.</span></li>
-    <li><b>Entregar</b><span>El repartidor sigue el mapa, pide la palabra y cierra cada parada. Todo queda registrado.</span></li>
-  </ol>
-</div></section>
-
-<section id="proyecto"><div class="wrap">
-  <h2>El proyecto</h2>
-  <p class="sub">Rutas Eficientes es el proyecto final de la Tecnicatura en Informática, desarrollado para Aprilon, una empresa textil real que reparte mercadería a diario. No es un caso de estudio inventado: el sistema está en uso y las decisiones se tomaron contra un problema concreto.</p>
-  <div class="grid g4">
-    <div class="card"><h3>Backend</h3><p>PHP 8 con PDO sobre MySQL. 31 endpoints, sin framework.</p></div>
-    <div class="card"><h3>Frontend</h3><p>Una sola página en HTML, CSS y JavaScript. Sin build, sin dependencias.</p></div>
-    <div class="card"><h3>Mapas</h3><p>Leaflet con OpenStreetMap para visualizar; Google Routes para optimizar.</p></div>
-    <div class="card"><h3>Datos</h3><p>Siete tablas normalizadas hasta la tercera forma normal.</p></div>
-  </div>
-  <div class="stack">
-    <span>PHP 8</span><span>MySQL / MariaDB</span><span>PDO</span><span>Leaflet</span>
-    <span>OpenStreetMap</span><span>Google Routes API</span><span>Google Places</span><span>Service Worker</span><span>SMTP</span>
-  </div>
-</div></section>
-
-<section id="faq"><div class="wrap">
-  <h2>Preguntas frecuentes</h2>
-  <p class="sub">Las mismas respuestas que acompañan al manual de uso del sistema.</p>
-
-  <div class="faq-group">
-    <h3>Acceso</h3>
-    <details class="faq"><summary>Me olvidé la contraseña. ¿Qué hago?</summary>
-      <div class="ans"><p>Pedí el restablecimiento desde la pantalla de ingreso. El jefe recibe la solicitud y te genera una clave temporal; con esa clave entrás y el sistema te obliga a definir una nueva.</p></div></details>
-    <details class="faq"><summary>¿Por qué no puedo crear un segundo administrador?</summary>
-      <div class="ans"><p>Porque el sistema admite una sola cuenta de administrador, y esa restricción está impuesta por la base de datos, no por la pantalla. Si necesitás cambiar quién es el administrador, editá la cuenta existente.</p></div></details>
-    <details class="faq"><summary>¿Puedo tener varios conductores con rutas distintas?</summary>
-      <div class="ans"><p>No. El sistema está pensado para un solo conductor: cualquier ruta publicada la ve quien esté logueado con ese rol. No hay asignación de rutas por persona.</p></div></details>
-  </div>
-
-  <div class="faq-group">
-    <h3>Armado de rutas</h3>
-    <details class="faq"><summary>El botón “Calcular ruta óptima” está gris y no puedo tocarlo.</summary>
-      <div class="ans"><p>Necesitás al menos dos puntos cargados. Con uno solo no hay recorrido que optimizar. Agregá el segundo y el botón se habilita solo.</p></div></details>
-    <details class="faq"><summary>Cargué las paradas en un orden y el sistema me las cambió. ¿Es un error?</summary>
-      <div class="ans"><p>No, es la función principal: el sistema reordena las paradas para que el recorrido total sea el más corto posible, considerando además el tráfico del momento.</p></div></details>
-    <details class="faq"><summary>¿Cuál es la diferencia entre “Dirección nueva” y “Punto guardado”?</summary>
-      <div class="ans"><p>Una dirección nueva se usa solo en la ruta de hoy y no queda en la agenda. Un punto guardado es un cliente frecuente con un apodo, que podés reutilizar cuando quieras.</p></div></details>
-    <details class="faq"><summary>El autocompletado de direcciones tarda o no muestra nada.</summary>
-      <div class="ans"><p>Escribí al menos unas letras de la calle y esperá un segundo; aparece el indicador “Buscando…”. Si no aparece ninguna sugerencia, revisá la conexión del servidor a internet: la búsqueda la resuelve Google, no el navegador.</p></div></details>
-    <details class="faq"><summary>Programé una ruta para un día futuro y al recargar la página desapareció la pestaña.</summary>
-      <div class="ans"><p>La ruta sigue guardada en el servidor: lo que no persiste es la pestaña del día en pantalla. Volvé a elegir esa fecha en el calendario y reaparece con sus puntos.</p></div></details>
-    <details class="faq"><summary>Publiqué una ruta por error.</summary>
-      <div class="ans"><p>Podés despublicarla desde el historial de rutas, y el conductor deja de verla. Si quedaron varias rutas duplicadas del día, existe además la opción de borrar todas las rutas de la fecha actual y empezar de cero.</p></div></details>
-  </div>
-
-  <div class="faq-group">
-    <h3>Verificación de entregas</h3>
-    <details class="faq"><summary>¿Para qué sirve la palabra de verificación?</summary>
-      <div class="ans"><p>Es la prueba de que la entrega se hizo. Al publicar la ruta, el destinatario recibe por email una palabra al azar; el conductor se la pide al entregar y la ingresa en la aplicación. Sin esa palabra, esa parada no se puede marcar como completada.</p></div></details>
-    <details class="faq"><summary>¿Se puede mandar la palabra por WhatsApp o SMS?</summary>
-      <div class="ans"><p>No. Solo por email. Los otros canales requieren contratar un proveedor externo pago.</p></div></details>
-    <details class="faq"><summary>El destinatario no recibió el email.</summary>
-      <div class="ans"><p>Revisá la carpeta de correo no deseado y que el email cargado en el punto esté bien escrito. Si nadie recibe los correos, el problema está en la configuración del servidor de salida.</p></div></details>
-    <details class="faq"><summary>El conductor ingresa la palabra y el sistema la rechaza.</summary>
-      <div class="ans"><p>La palabra es la del último envío: si la ruta se volvió a publicar, la anterior dejó de valer y hay que usar la nueva. Cada intento fallido queda registrado.</p></div></details>
-  </div>
-
-  <div class="faq-group">
-    <h3>En la calle</h3>
-    <details class="faq"><summary>El mapa no sigue mi posición.</summary>
-      <div class="ans"><p>El seguimiento necesita el GPS encendido y el permiso de ubicación otorgado al navegador. Si lo rechazaste la primera vez, hay que habilitarlo en la configuración del sitio.</p></div></details>
-    <details class="faq"><summary>¿Tiene navegación con voz, como un GPS?</summary>
-      <div class="ans"><p>Sí, pero se apoya en Google Maps: el botón de pantalla completa abre la navegación paso a paso allí. No existe un servicio de navegación con voz gratuito que pueda funcionar dentro de una página web.</p></div></details>
-    <details class="faq"><summary>¿Funciona sin señal?</summary>
-      <div class="ans"><p>Parcialmente, y solo si el sistema está publicado con conexión segura (HTTPS): en ese caso el mapa del día queda precargado y se ve sin datos. Sobre una dirección sin HTTPS el navegador no lo permite. Marcar paradas siempre requiere conexión.</p></div></details>
-    <details class="faq"><summary>Se me cortó una calle y no puedo llegar a la próxima parada.</summary>
-      <div class="ans"><p>Reportá un imprevisto indicando el tipo y el detalle. El administrador lo recibe en el momento, con aviso sonoro, y puede rearmar la ruta si hace falta.</p></div></details>
-  </div>
-
-  <div class="faq-group" style="margin-bottom:0">
-    <h3>General</h3>
-    <details class="faq"><summary>¿Se puede usar para dos empresas distintas?</summary>
-      <div class="ans"><p>No. Cada instalación atiende a una sola empresa. Separar los datos de varias empresas requeriría un cambio de fondo en el sistema.</p></div></details>
-    <details class="faq"><summary>¿Hay que instalar algo en el teléfono del conductor?</summary>
-      <div class="ans"><p>No. Se abre desde el navegador. Conviene guardar la dirección como acceso directo en la pantalla de inicio.</p></div></details>
-    <details class="faq"><summary>¿Los datos de los clientes están seguros?</summary>
-      <div class="ans"><p>Las contraseñas se guardan cifradas y nunca en texto plano, y las claves de los servicios externos viven solo en el servidor: el navegador nunca las ve.</p></div></details>
-  </div>
-</div></section>
-
-<section id="equipo"><div class="wrap">
-  <h2>El equipo</h2>
-  <p class="sub">Equipo de desarrollo — 7° Informática B.</p>
-  <div class="team">
-    <div class="member"><img class="avatar" src="img/equipo/bravo-cejas.jpg" alt="Santiago Bravo Cejas" width="72" height="72" loading="lazy"><b>Santiago Bravo Cejas</b><span>Project Manager + Dev Backend</span></div>
-    <div class="member"><img class="avatar" src="img/equipo/abraham.jpg" alt="Matías Abraham" width="72" height="72" loading="lazy"><b>Matías Abraham</b><span>Administrador de base de datos</span></div>
-    <div class="member"><img class="avatar" src="img/equipo/cerredo.jpg" alt="Ignacio Cerredo" width="72" height="72" loading="lazy"><b>Ignacio Cerredo</b><span>Dev Frontend + Backend</span></div>
-    <div class="member"><img class="avatar" src="img/equipo/dutra.jpg" alt="Joaquin Dutra" width="72" height="72" loading="lazy"><b>Joaquin Dutra</b><span>Diseño UX/UI + Dev Frontend</span></div>
-    <div class="member"><img class="avatar" src="img/equipo/mascioli.jpg" alt="Franco Mascioli" width="72" height="72" loading="lazy"><b>Franco Mascioli</b><span>Administrador de infraestructura</span></div>
-  </div>
-</div></section>
-
-<footer><div class="wrap">
-  Rutas Eficientes — Proyecto final de Tecnicatura en Informática, 2026. Desarrollado para Aprilon.
-</div></footer>
-
-<script>
-/* Aparición progresiva al hacer scroll. Si el navegador no soporta
-   IntersectionObserver, o el visitante pidió menos movimiento, todo
-   queda visible de entrada: la animación nunca esconde contenido. */
-(function(){
-  var quieto = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var objetivos = document.querySelectorAll('h2, .sub, .card, ol.flow li, .member, .stack, .faq, .faq-group > h3, .cta, .lead, .pill');
-  if(quieto || !('IntersectionObserver' in window)){
-    for(var i=0;i<objetivos.length;i++) objetivos[i].classList.add('in');
-    return;
-  }
-  for(var j=0;j<objetivos.length;j++) objetivos[j].classList.add('reveal');
-  var obs = new IntersectionObserver(function(entradas){
-    entradas.forEach(function(e){
-      if(!e.isIntersecting) return;
-      /* escalonado corto entre hermanos, para que la fila entre en cascada */
-      var hermanos = Array.prototype.slice.call(e.target.parentNode.children);
-      var pos = Math.min(hermanos.indexOf(e.target), 5);
-      e.target.style.transitionDelay = (pos * 70) + 'ms';
-      e.target.classList.add('in');
-      obs.unobserve(e.target);
-    });
-  }, {threshold:.12, rootMargin:'0px 0px -40px 0px'});
-  for(var k=0;k<objetivos.length;k++) obs.observe(objetivos[k]);
-})();
-</script>
+<script src="js/vendor/gsap.min.js" defer></script>
+<script src="js/vendor/ScrollTrigger.min.js" defer></script>
+<script src="js/vendor/SplitText.min.js" defer></script>
+<script src="js/vendor/lenis.min.js" defer></script>
+<script src="js/ruta-demo.js" defer></script>
+<script src="js/landing.js" defer></script>
 </body>
 </html>
