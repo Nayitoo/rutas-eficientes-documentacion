@@ -224,9 +224,17 @@
 <figure class="shot phone"><img src="img/31-historial-actualizado.jpg" alt="Historial de rutas en el teléfono con la ruta del día en curso arriba"><figcaption>El historial lista las rutas por fecha con sus paradas, distancia, duración y estado.</figcaption></figure>
 
 <h3>9.2 Rutas para días futuros</h3>
-<p>La tira de días de la pantalla de inicio muestra la semana en curso, de lunes a sábado, con la <b>fecha de cada día en formato DD/MM</b> debajo de su nombre.</p>
-<p>El ícono <b>+</b> al final de la tira de días abre un calendario para programar una ruta en cualquier fecha futura. Se pueden tener <b>varias fechas programadas a la vez</b>, cada una con sus propios puntos, sin que se pisen.</p>
-<div class="card"><b>Las fechas programadas se conservan.</b> Al volver a entrar o recargar la página, las pestañas de los días futuros que ya tienen ruta guardada se vuelven a mostrar solas: el selector las reconstruye leyendo el servidor.</div>
+<p>En la pantalla de inicio, el selector de fecha muestra el <b>día elegido</b> y, debajo, si ese día ya tiene una ruta o puntos cargados.</p>
+<p>Para elegir otro día, tocá <b>Cambiar</b>: se abre el calendario del mes, de lunes a domingo, como un almanaque. Tocá el día y el calendario se cierra solo. Con las flechas ‹ › se pasa al mes anterior o al siguiente; tocando el nombre del mes se elige cualquiera de los próximos 12. El botón <b>Hoy</b> vuelve al día actual.</p>
+<ul>
+  <li><b>Verde fuerte:</b> el día elegido.</li>
+  <li><b>Verde claro:</b> días que ya tienen una ruta o puntos cargados.</li>
+  <li><b>Borde verde:</b> hoy.</li>
+  <li>Los domingos se muestran para orientarse, pero no se pueden elegir, porque no hay reparto. Los días anteriores a la semana en curso tampoco.</li>
+</ul>
+<figure class="shot"><img src="img/37-calendario.jpg" alt="Calendario de octubre abierto en el inicio del administrador, con el día elegido en verde fuerte y los días con ruta en verde claro"><figcaption>El calendario abierto con «Cambiar»: el día elegido en verde fuerte, los días con ruta en verde claro y la leyenda debajo.</figcaption></figure>
+<p>Se pueden tener <b>varias fechas programadas a la vez</b>, cada una con sus propios puntos, sin que se pisen.</p>
+<div class="card"><b>Las fechas programadas se conservan.</b> Al volver a entrar o recargar la página, los días futuros que ya tienen ruta guardada siguen apareciendo en verde claro en el calendario: el selector los lee del servidor.</div>
 
 <h2 id="s10"><span class="num">10</span>Administración de usuarios</h2>
 <p>Funciones exclusivas del jefe.</p>
@@ -282,7 +290,7 @@
   <tr><td>No llegan los correos de verificación</td><td>Revisá correo no deseado, la dirección cargada y la configuración SMTP del servidor.</td></tr>
   <tr><td>La palabra de verificación se rechaza</td><td>La ruta se volvió a publicar y la palabra anterior venció. Usá la del último correo.</td></tr>
   <tr><td>El mapa no funciona sin señal</td><td>El sistema no está publicado con HTTPS. Es condición para esa función.</td></tr>
-  <tr><td>No aparece la pestaña de una fecha futura</td><td>Las fechas con ruta guardada se reconstruyen solas al entrar. Si no aparece, elegila de nuevo desde el ícono <b>+</b> del calendario: sus puntos siguen guardados.</td></tr>
+  <tr><td>Una fecha futura no aparece marcada en el calendario</td><td>Las fechas con ruta guardada se marcan en verde claro al entrar. Si no aparece, tocá <b>Cambiar</b> y elegila en el calendario: sus puntos siguen guardados.</td></tr>
   <tr><td>El mapa de una pantalla no se mueve al arrastrarlo</td><td>Es intencional: en la computadora mantené presionada Ctrl; en el teléfono usá dos dedos. Ver la sección 5.1.</td></tr>
   <tr><td>No deja crear otro administrador</td><td>Es intencional: solo puede existir uno.</td></tr>
   <tr><td>Cambié algo y sigo viendo lo viejo</td><td>El navegador guarda la página en caché. Recargá forzando la actualización.</td></tr>
